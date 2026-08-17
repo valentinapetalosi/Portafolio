@@ -4,7 +4,7 @@ import mujerVoladora from "./assets/mujer-voladora.webp";
 import fotoPortafolio from "./assets/foto-portafolio.webp";
 import logoValentina from "./assets/logo-valentina.webp";
 import isotipoCream from "./assets/isotipo-cream.webp";
-import aarimoCover from "./assets/projects/aarimo-cover.webp";
+import aarimoLaptop from "./assets/projects/aarimo-cover.webp";
 import aarimo1 from "./assets/projects/aarimo-1.webp";
 import aarimo2 from "./assets/projects/aarimo-2.webp";
 import aarimo3 from "./assets/projects/aarimo-3.webp";
@@ -71,8 +71,8 @@ const PROJECTS: Project[] = [
     year: "2025",
     bg: "bg-chip-teal",
     icon: Flower,
-    cover: aarimoCover,
-    gallery: [aarimo1, aarimo2, aarimo3, aarimo4],
+    cover: aarimo1,
+    gallery: [aarimo1, aarimo2, aarimo3, aarimo4, aarimoLaptop],
     text: AARIMO_TEXT,
   },
   {
