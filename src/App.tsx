@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Brush, Flower, Heart, InstagramIcon, Squiggle, Star, Sun } from "./Doodles";
 import mujerVoladora from "./assets/mujer-voladora.webp";
 import fotoPortafolio from "./assets/foto-portafolio.webp";
@@ -24,13 +25,6 @@ const CHIP_COLORS = [
 
 const PROJECTS = [
   {
-    client: "AARIMO",
-    description: "Ilustración para landing page",
-    year: "2025",
-    bg: "bg-chip-teal",
-    icon: Flower,
-  },
-  {
     client: "Páramo Impacta",
     description: "Próximamente",
     year: "2024",
@@ -43,6 +37,13 @@ const PROJECTS = [
     year: "2024",
     bg: "bg-chip-cobalt",
     icon: Star,
+  },
+  {
+    client: "AARIMO",
+    description: "Ilustración para landing page",
+    year: "2025",
+    bg: "bg-chip-teal",
+    icon: Flower,
   },
   {
     client: "Profamilia",
@@ -61,6 +62,22 @@ const PROJECTS = [
 ];
 
 function App() {
+  const [selected, setSelected] = useState<number | null>(null);
+  const centerIndex = Math.floor(PROJECTS.length / 2);
+
+  useEffect(() => {
+    if (selected === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [selected]);
+
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
       <div className="animate-flyby pointer-events-none fixed left-0 top-24 z-20 w-56 sm:w-72 md:w-80">
@@ -152,36 +169,88 @@ function App() {
         </section>
 
         {/* Projects carousel */}
-        <section id="trabajos" className="px-6 py-16 sm:px-10 sm:py-20">
-          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
+        <section id="trabajos" className="overflow-x-clip px-6 py-16 sm:px-10 sm:py-20">
+          <h2 className="text-center font-display text-3xl tracking-tight sm:text-4xl">
             Proyectos
           </h2>
-          <div className="mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4">
+          <div className="mt-12 flex flex-nowrap items-center justify-center overflow-x-auto px-8 pb-4 sm:flex-wrap sm:overflow-visible sm:px-0">
             {PROJECTS.map((p, i) => {
               const Icon = p.icon;
+              const offset = i - centerIndex;
+              const isCenter = offset === 0;
+              const rotate = offset * 6;
+              const translateY = Math.abs(offset) * 28;
               return (
-                <article
+                <button
                   key={i}
-                  className={`${p.bg} flex w-72 shrink-0 snap-start flex-col gap-4 rounded-3xl p-5 shadow-sm sm:w-80`}
+                  type="button"
+                  onClick={() => setSelected(i)}
+                  className={`${p.bg} relative flex w-40 shrink-0 flex-col gap-3 rounded-3xl p-4 text-left shadow-md transition-transform duration-200 first:ml-0 -ml-8 hover:z-20 hover:-translate-y-2 focus-visible:z-20 sm:w-56 sm:-ml-14 sm:p-5`}
+                  style={{
+                    transform: `rotate(${rotate}deg) translateY(${translateY}px)`,
+                    zIndex: 10 - Math.abs(offset),
+                  }}
                 >
                   <div>
-                    <h3 className="font-display text-xl font-bold sm:text-2xl">
+                    <h3 className="font-display text-lg font-bold sm:text-2xl">
                       {p.client}
                     </h3>
-                    <p className="font-sans text-sm text-ink/80">{p.description}</p>
-                    <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
-                      {p.year}
-                    </p>
+                    {isCenter && (
+                      <>
+                        <p className="font-sans text-sm text-ink/80">
+                          {p.description}
+                        </p>
+                        <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
+                          {p.year}
+                        </p>
+                      </>
+                    )}
                   </div>
                   <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
                     <Icon />
                   </div>
-                </article>
+                </button>
               );
             })}
           </div>
         </section>
       </main>
+
+      {selected !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 px-6 py-10"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className={`${PROJECTS[selected].bg} relative max-h-full w-full max-w-2xl overflow-y-auto rounded-3xl p-6 shadow-xl sm:p-10`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSelected(null)}
+              aria-label="Cerrar"
+              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-ink bg-cream text-lg transition hover:bg-ink hover:text-cream"
+            >
+              ✕
+            </button>
+            <h3 className="font-display text-3xl font-bold sm:text-4xl">
+              {PROJECTS[selected].client}
+            </h3>
+            <p className="mt-2 font-sans text-base text-ink/80 sm:text-lg">
+              {PROJECTS[selected].description}
+            </p>
+            <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
+              {PROJECTS[selected].year}
+            </p>
+            <div className="mt-6 flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
+              {(() => {
+                const Icon = PROJECTS[selected].icon;
+                return <Icon />;
+              })()}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
