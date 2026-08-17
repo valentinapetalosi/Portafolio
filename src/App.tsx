@@ -81,7 +81,6 @@ function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
-      <div className="pointer-events-none fixed inset-2 z-40 rounded-[1.75rem] border-[3px] border-frame-green sm:inset-3" />
       <div className="animate-flyby pointer-events-none fixed left-0 top-24 z-20 w-56 sm:w-72 md:w-80">
         <img src={mujerVoladora} alt="" aria-hidden="true" className="bob w-full" />
       </div>
