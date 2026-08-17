@@ -4,6 +4,21 @@ import mujerVoladora from "./assets/mujer-voladora.webp";
 import fotoPortafolio from "./assets/foto-portafolio.webp";
 import logoValentina from "./assets/logo-valentina.webp";
 import isotipoCream from "./assets/isotipo-cream.webp";
+import aarimoCover from "./assets/projects/aarimo-cover.webp";
+import aarimo1 from "./assets/projects/aarimo-1.webp";
+import aarimo2 from "./assets/projects/aarimo-2.webp";
+import aarimo3 from "./assets/projects/aarimo-3.webp";
+import aarimo4 from "./assets/projects/aarimo-4.webp";
+
+const AARIMO_TEXT = `2025
+Proyecto por encargo
+Ilustración para página web
+—
+Creada para AARIMO (Alianza Amazónica para la Reducción de los Impactos de la Minería de Oro), esta ilustración se desarrolló para el sitio web de la organización con el fin de comunicar visualmente la riqueza y la interconexión de la región amazónica.
+
+Inspirada en los vastos paisajes moldeados por el río y la selva tropical, la obra reúne los elementos naturales y culturales que definen la vida en el territorio. Las tradiciones indígenas, la pesca artesanal y el ecoturismo se representan junto a la diversa fauna que habita el ecosistema.
+
+A través de una composición panorámica, la ilustración resalta la relación entre las comunidades y la naturaleza, celebrando la biodiversidad de la Amazonía al tiempo que refuerza la importancia de proteger su patrimonio ambiental y cultural.`;
 
 const CLIENTS = [
   "Páramo Impacta",
@@ -24,7 +39,18 @@ const CHIP_COLORS = [
   "bg-chip-sage",
 ];
 
-const PROJECTS = [
+type Project = {
+  title: string;
+  brand: string;
+  year: string;
+  bg: string;
+  icon: typeof Sun;
+  cover?: string;
+  gallery?: string[];
+  text?: string;
+};
+
+const PROJECTS: Project[] = [
   {
     title: "Próximamente",
     brand: "Páramo Impacta",
@@ -45,6 +71,9 @@ const PROJECTS = [
     year: "2025",
     bg: "bg-chip-teal",
     icon: Flower,
+    cover: aarimoCover,
+    gallery: [aarimo1, aarimo2, aarimo3, aarimo4],
+    text: AARIMO_TEXT,
   },
   {
     title: "Próximamente",
@@ -190,8 +219,17 @@ function App() {
                     zIndex: 10 - Math.abs(offset),
                   }}
                 >
-                  <div className={`${p.bg} flex flex-1 items-center justify-center`}>
-                    <Icon className="h-16 w-16 sm:h-20 sm:w-20" />
+                  <div className={`${p.bg} relative flex flex-1 items-center justify-center`}>
+                    {p.cover ? (
+                      <img
+                        src={p.cover}
+                        alt=""
+                        aria-hidden="true"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                    ) : (
+                      <Icon className="h-16 w-16 sm:h-20 sm:w-20" />
+                    )}
                   </div>
                   <img
                     src={isotipoCream}
@@ -214,38 +252,59 @@ function App() {
         </section>
       </main>
 
-      {selected !== null && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 px-6 py-10"
-          onClick={() => setSelected(null)}
-        >
-          <div
-            className={`${PROJECTS[selected].bg} relative max-h-full w-full max-w-2xl overflow-y-auto rounded-3xl p-6 shadow-xl sm:p-10`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              type="button"
+      {selected !== null &&
+        (() => {
+          const project = PROJECTS[selected];
+          const Icon = project.icon;
+          return (
+            <div
+              className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 px-6 py-10"
               onClick={() => setSelected(null)}
-              aria-label="Cerrar"
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-ink bg-cream text-lg transition hover:bg-ink hover:text-cream"
             >
-              ✕
-            </button>
-            <h3 className="font-display text-3xl font-bold sm:text-4xl">
-              {PROJECTS[selected].title}
-            </h3>
-            <p className="mt-2 font-sans text-base text-ink/80 sm:text-lg">
-              {PROJECTS[selected].brand} · {PROJECTS[selected].year}
-            </p>
-            <div className="mt-6 flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
-              {(() => {
-                const Icon = PROJECTS[selected].icon;
-                return <Icon />;
-              })()}
+              <div
+                className={`${project.bg} relative max-h-full w-full ${project.gallery ? "max-w-3xl" : "max-w-2xl"} overflow-y-auto rounded-3xl p-6 shadow-xl sm:p-10`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  type="button"
+                  onClick={() => setSelected(null)}
+                  aria-label="Cerrar"
+                  className="absolute right-4 top-4 z-10 flex h-9 w-9 items-center justify-center rounded-full border border-ink bg-cream text-lg transition hover:bg-ink hover:text-cream"
+                >
+                  ✕
+                </button>
+                <h3 className="font-display text-3xl font-bold sm:text-4xl">
+                  {project.title}
+                </h3>
+                <p className="mt-2 font-sans text-base text-ink/80 sm:text-lg">
+                  {project.brand} · {project.year}
+                </p>
+
+                {project.gallery ? (
+                  <div className="mt-6 flex flex-col gap-4">
+                    {project.gallery.map((src, i) => (
+                      <img
+                        key={i}
+                        src={src}
+                        alt={`${project.title} ${i + 1}`}
+                        className="w-full rounded-2xl"
+                      />
+                    ))}
+                    {project.text && (
+                      <p className="whitespace-pre-line rounded-2xl bg-cream/90 p-5 font-sans text-sm leading-relaxed text-ink/80 sm:p-6 sm:text-base">
+                        {project.text}
+                      </p>
+                    )}
+                  </div>
+                ) : (
+                  <div className="mt-6 flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
+                    <Icon />
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          );
+        })()}
     </div>
   );
 }
