@@ -1,6 +1,7 @@
 import { Squiggle } from "./Doodles";
 import mujerVoladora from "./assets/mujer-voladora.webp";
-import fotoValentina from "./assets/foto-valentina.webp";
+import fotoPortafolio from "./assets/foto-portafolio.webp";
+import logoValentina from "./assets/logo-valentina.webp";
 
 const CLIENTS = [
   "Páramo Impacta",
@@ -29,24 +30,13 @@ function App() {
       </div>
 
       {/* Nav */}
-      <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
-        <a href="#top" className="font-display text-xl font-bold tracking-tight">
-          Valentina Petalosi
+      <header className="relative z-10 flex items-center justify-between bg-blue px-6 py-4 sm:px-10">
+        <a href="#top" className="block">
+          <img src={logoValentina} alt="Valentina Petalosi" className="h-10 sm:h-12" />
         </a>
-        <nav className="hidden items-center gap-8 font-sans text-sm font-medium sm:flex">
-          <a href="#sobre-mi" className="hover:opacity-60">
-            Sobre mí
-          </a>
-          <a href="#trabajos" className="hover:opacity-60">
-            Trabajos
-          </a>
-          <a href="#clientes" className="hover:opacity-60">
-            Clientes
-          </a>
-        </nav>
         <a
           href="#contacto"
-          className="rounded-full border border-ink px-5 py-2 text-sm font-medium transition hover:bg-ink hover:text-cream"
+          className="rounded-full border border-ink bg-cream px-5 py-2 text-sm font-medium transition hover:bg-ink hover:text-cream"
         >
           Contáctame
         </a>
@@ -54,37 +44,30 @@ function App() {
 
       <main id="top" className="relative z-10">
         {/* Headline + intro copy */}
-        <section
-          id="sobre-mi"
-          className="mx-auto max-w-6xl px-6 pb-16 pt-16 sm:px-10 sm:pt-20"
-        >
-          <div className="flex flex-col items-center gap-10 md:flex-row md:justify-center">
-            <div className="bob shrink-0 -rotate-3">
-              <div className="w-48 rounded-[2.5rem] bg-sun p-2.5 shadow-sm sm:w-56 md:w-64">
-                <img
-                  src={fotoValentina}
-                  alt="Valentina Petalosi en su estudio"
-                  className="aspect-[3/4] w-full rounded-[2rem] object-cover"
-                />
-              </div>
-            </div>
-            <div className="max-w-2xl text-center">
-              <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-                <span className="italic">¡Hola!</span> Soy{" "}
-                <span className="font-bold">Valentina Petalosi</span>,
-                bienvenid<span className="text-outline">@</span> a mi{" "}
-                <span className="relative inline-block">
-                  mundo
-                  <Squiggle className="absolute -bottom-2 left-0 h-4 w-full text-sun" />
-                </span>{" "}
-                ilustrado.
-              </h1>
-              <p className="mx-auto mt-8 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
-                Hago proyectos de ilustración para darle vida a tus productos,
-                documentos institucionales, campañas, empaques y redes
-                sociales.
-              </p>
-            </div>
+        <section id="sobre-mi" className="grid md:grid-cols-[minmax(280px,38%)_1fr]">
+          <div className="bg-chip-coral">
+            <img
+              src={fotoPortafolio}
+              alt="Valentina Petalosi en su estudio"
+              className="h-full max-h-[420px] w-full object-cover md:max-h-none"
+            />
+          </div>
+          <div className="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-16 md:py-20">
+            <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+              <span className="italic">¡Hola!</span> Soy{" "}
+              <span className="font-bold">Valentina Petalosi</span>,
+              bienvenid<span className="text-outline">@</span> a mi{" "}
+              <span className="relative inline-block">
+                mundo
+                <Squiggle className="absolute -bottom-2 left-0 h-4 w-full text-sun" />
+              </span>{" "}
+              ilustrado.
+            </h1>
+            <p className="mt-8 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
+              Hago proyectos de ilustración para darle vida a tus productos,
+              documentos institucionales, campañas, empaques y redes
+              sociales.
+            </p>
           </div>
         </section>
 
