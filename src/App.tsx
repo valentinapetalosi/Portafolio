@@ -10,6 +10,8 @@ const CLIENTS = [
   "WWF",
 ];
 
+const CHIP_COLORS = ["bg-pink", "bg-blue", "bg-green", "bg-sun"];
+
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
@@ -42,18 +44,12 @@ function App() {
       </header>
 
       <main id="top" className="relative z-10">
-        {/* Intro copy */}
-        <section className="px-6 pt-16 sm:px-10 sm:pt-20">
-          <p className="max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
-            Ilustro para marcas que quieren decir algo con color, textura y
-            calidez. Cada proyecto es una excusa para contar una historia
-            distinta.
-          </p>
-        </section>
-
-        {/* Headline */}
-        <section id="sobre-mi" className="px-6 pb-16 pt-10 sm:px-10 sm:pt-16">
-          <h1 className="max-w-4xl font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+        {/* Headline + intro copy */}
+        <section
+          id="sobre-mi"
+          className="mx-auto max-w-4xl px-6 pb-16 pt-16 text-center sm:px-10 sm:pt-20"
+        >
+          <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             <span className="italic">¡Hola!</span> Soy{" "}
             <span className="font-bold">Valentina Petalosi</span>,
             bienvenid<span className="text-outline">@</span> a mi{" "}
@@ -63,6 +59,10 @@ function App() {
             </span>{" "}
             ilustrado.
           </h1>
+          <p className="mx-auto mt-8 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
+            Hago proyectos de ilustración para darle vida a tus productos,
+            documentos institucionales, campañas, empaques y redes sociales.
+          </p>
         </section>
 
         {/* Clients marquee */}
@@ -71,10 +71,14 @@ function App() {
             He trabajado con
           </p>
           <div className="relative flex overflow-hidden">
-            <div className="animate-marquee flex w-max shrink-0 items-center gap-10 pr-10 font-display text-2xl sm:text-4xl">
+            <div className="animate-marquee flex w-max shrink-0 items-center gap-10 pr-10">
               {[...CLIENTS, ...CLIENTS].map((c, i) => (
                 <span key={i} className="flex shrink-0 items-center gap-10">
-                  {c}
+                  <span
+                    className={`${CHIP_COLORS[i % CLIENTS.length % CHIP_COLORS.length]} rounded-2xl px-6 py-3 font-display text-xl sm:text-3xl`}
+                  >
+                    {c}
+                  </span>
                   <span aria-hidden className="text-2xl text-ink/30">
                     ✦
                   </span>
