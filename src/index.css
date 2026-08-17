@@ -66,6 +66,14 @@
   --color-blue: #6f8cf2;
   --color-green: #7fd992;
   --color-sun: #f6d24a;
+
+  --color-chip-rose: #d773a1;
+  --color-chip-cobalt: #2f6db4;
+  --color-chip-teal: #3d8967;
+  --color-chip-coral: #e2523a;
+  --color-chip-sky: #86bfd4;
+  --color-chip-lilac: #cd93c8;
+  --color-chip-sage: #93bb7e;
 }
 
 html {

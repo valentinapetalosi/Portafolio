@@ -10,7 +10,15 @@ const CLIENTS = [
   "WWF",
 ];
 
-const CHIP_COLORS = ["bg-pink", "bg-blue", "bg-green", "bg-sun"];
+const CHIP_COLORS = [
+  "bg-chip-rose",
+  "bg-chip-cobalt",
+  "bg-chip-teal",
+  "bg-chip-coral",
+  "bg-chip-sky",
+  "bg-chip-lilac",
+  "bg-chip-sage",
+];
 
 function App() {
   return (
@@ -67,8 +75,8 @@ function App() {
 
         {/* Clients marquee */}
         <section id="clientes" className="border-y-2 border-ink py-6">
-          <p className="px-6 pb-4 font-sans text-xs font-semibold uppercase tracking-[0.2em] text-ink/50 sm:px-10">
-            He trabajado con
+          <p className="px-6 pb-4 text-center font-sans text-lg font-semibold text-ink sm:px-10 sm:text-xl">
+            He trabajado con marcas y proyectos como:
           </p>
           <div className="relative flex overflow-hidden">
             <div className="animate-marquee flex w-max shrink-0 items-center gap-10 pr-10">
