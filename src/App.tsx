@@ -3,6 +3,7 @@ import { Brush, Flower, Heart, InstagramIcon, Squiggle, Star, Sun } from "./Dood
 import mujerVoladora from "./assets/mujer-voladora.webp";
 import fotoPortafolio from "./assets/foto-portafolio.webp";
 import logoValentina from "./assets/logo-valentina.webp";
+import isotipoCream from "./assets/isotipo-cream.webp";
 
 const CLIENTS = [
   "Páramo Impacta",
@@ -25,36 +26,36 @@ const CHIP_COLORS = [
 
 const PROJECTS = [
   {
-    client: "Páramo Impacta",
-    description: "Próximamente",
+    title: "Próximamente",
+    brand: "Páramo Impacta",
     year: "2024",
     bg: "bg-chip-coral",
     icon: Sun,
   },
   {
-    client: "WWF",
-    description: "Próximamente",
+    title: "Próximamente",
+    brand: "WWF",
     year: "2024",
     bg: "bg-chip-cobalt",
     icon: Star,
   },
   {
-    client: "AARIMO",
-    description: "Ilustración para landing page",
+    title: "Ilustración para landing page",
+    brand: "AARIMO",
     year: "2025",
     bg: "bg-chip-teal",
     icon: Flower,
   },
   {
-    client: "Profamilia",
-    description: "Próximamente",
+    title: "Próximamente",
+    brand: "Profamilia",
     year: "2023",
     bg: "bg-chip-lilac",
     icon: Heart,
   },
   {
-    client: "Ana María Cosméticos",
-    description: "Próximamente",
+    title: "Próximamente",
+    brand: "Ana María Cosméticos",
     year: "2023",
     bg: "bg-chip-rose",
     icon: Brush,
@@ -80,6 +81,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
+      <div className="pointer-events-none fixed inset-2 z-40 rounded-[1.75rem] border-[3px] border-frame-green sm:inset-3" />
       <div className="animate-flyby pointer-events-none fixed left-0 top-24 z-20 w-56 sm:w-72 md:w-80">
         <img src={mujerVoladora} alt="" aria-hidden="true" className="bob w-full" />
       </div>
@@ -177,36 +179,34 @@ function App() {
             {PROJECTS.map((p, i) => {
               const Icon = p.icon;
               const offset = i - centerIndex;
-              const isCenter = offset === 0;
-              const rotate = offset * 6;
+              const rotate = offset * 5;
               return (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setSelected(i)}
-                  className={`${p.bg} stamp-edge relative flex w-56 shrink-0 flex-col gap-3 p-5 text-left shadow-md transition-transform duration-200 first:ml-0 -ml-10 hover:z-20 hover:-translate-y-2 focus-visible:z-20 sm:w-72 sm:-ml-16 sm:p-6`}
+                  className="relative flex aspect-[3/4] w-56 shrink-0 flex-col overflow-hidden rounded-[2rem] text-left shadow-md transition-transform duration-200 first:ml-0 -ml-10 hover:z-20 hover:-translate-y-2 focus-visible:z-20 sm:w-64 sm:-ml-14"
                   style={{
                     transform: `rotate(${rotate}deg)`,
                     zIndex: 10 - Math.abs(offset),
                   }}
                 >
-                  <div>
-                    <h3 className="font-display text-lg font-bold sm:text-2xl">
-                      {p.client}
-                    </h3>
-                    {isCenter && (
-                      <>
-                        <p className="font-sans text-sm text-ink/80 sm:text-base">
-                          {p.description}
-                        </p>
-                        <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
-                          {p.year}
-                        </p>
-                      </>
-                    )}
-                  </div>
-                  <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
+                  <div className={`${p.bg} flex flex-1 items-center justify-center`}>
                     <Icon className="h-16 w-16 sm:h-20 sm:w-20" />
+                  </div>
+                  <img
+                    src={isotipoCream}
+                    alt=""
+                    aria-hidden="true"
+                    className="absolute left-1/2 top-4 h-7 w-7 -translate-x-1/2"
+                  />
+                  <div className="bg-cream px-4 py-3">
+                    <h3 className="font-display text-base font-bold leading-tight sm:text-lg">
+                      {p.title}
+                    </h3>
+                    <p className="mt-0.5 font-sans text-xs text-ink/60 sm:text-sm">
+                      {p.brand} · {p.year}
+                    </p>
                   </div>
                 </button>
               );
@@ -233,13 +233,10 @@ function App() {
               ✕
             </button>
             <h3 className="font-display text-3xl font-bold sm:text-4xl">
-              {PROJECTS[selected].client}
+              {PROJECTS[selected].title}
             </h3>
             <p className="mt-2 font-sans text-base text-ink/80 sm:text-lg">
-              {PROJECTS[selected].description}
-            </p>
-            <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
-              {PROJECTS[selected].year}
+              {PROJECTS[selected].brand} · {PROJECTS[selected].year}
             </p>
             <div className="mt-6 flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
               {(() => {

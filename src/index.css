@@ -41,16 +41,6 @@
 }
 
 @font-face {
-  font-family: "Gardein";
-  src:
-    url("./assets/fonts/gardein.woff2") format("woff2"),
-    url("./assets/fonts/gardein.woff") format("woff");
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Karla";
   src: url("./assets/fonts/Karla.ttf") format("truetype-variations");
   font-weight: 200 800;
@@ -67,7 +57,7 @@
 }
 
 @theme {
-  --font-display: "Roca", "Fraunces", serif;
+  --font-display: "gardein", "Roca", "Fraunces", serif;
   --font-sans: "Karla", "Space Grotesk", sans-serif;
 
   --color-cream: #faf3ea;
@@ -84,6 +74,7 @@
   --color-chip-sky: #a8e3f2;
   --color-chip-lilac: #bfa6de;
   --color-chip-sage: #a3a220;
+  --color-frame-green: #4bab7e;
 }
 
 html {
