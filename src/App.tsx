@@ -1,5 +1,6 @@
 import { Squiggle } from "./Doodles";
 import mujerVoladora from "./assets/mujer-voladora.webp";
+import fotoValentina from "./assets/foto-valentina.webp";
 
 const CLIENTS = [
   "Páramo Impacta",
@@ -55,22 +56,36 @@ function App() {
         {/* Headline + intro copy */}
         <section
           id="sobre-mi"
-          className="mx-auto max-w-4xl px-6 pb-16 pt-16 text-center sm:px-10 sm:pt-20"
+          className="mx-auto max-w-6xl px-6 pb-16 pt-16 sm:px-10 sm:pt-20"
         >
-          <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-            <span className="italic">¡Hola!</span> Soy{" "}
-            <span className="font-bold">Valentina Petalosi</span>,
-            bienvenid<span className="text-outline">@</span> a mi{" "}
-            <span className="relative inline-block">
-              mundo
-              <Squiggle className="absolute -bottom-2 left-0 h-4 w-full text-sun" />
-            </span>{" "}
-            ilustrado.
-          </h1>
-          <p className="mx-auto mt-8 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
-            Hago proyectos de ilustración para darle vida a tus productos,
-            documentos institucionales, campañas, empaques y redes sociales.
-          </p>
+          <div className="flex flex-col items-center gap-10 md:flex-row md:justify-center">
+            <div className="bob shrink-0 -rotate-3">
+              <div className="w-48 rounded-[2.5rem] bg-sun p-2.5 shadow-sm sm:w-56 md:w-64">
+                <img
+                  src={fotoValentina}
+                  alt="Valentina Petalosi en su estudio"
+                  className="aspect-[3/4] w-full rounded-[2rem] object-cover"
+                />
+              </div>
+            </div>
+            <div className="max-w-2xl text-center">
+              <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+                <span className="italic">¡Hola!</span> Soy{" "}
+                <span className="font-bold">Valentina Petalosi</span>,
+                bienvenid<span className="text-outline">@</span> a mi{" "}
+                <span className="relative inline-block">
+                  mundo
+                  <Squiggle className="absolute -bottom-2 left-0 h-4 w-full text-sun" />
+                </span>{" "}
+                ilustrado.
+              </h1>
+              <p className="mx-auto mt-8 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
+                Hago proyectos de ilustración para darle vida a tus productos,
+                documentos institucionales, campañas, empaques y redes
+                sociales.
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* Clients marquee */}
