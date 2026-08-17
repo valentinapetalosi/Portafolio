@@ -173,7 +173,7 @@ function App() {
           <h2 className="text-center font-display text-3xl tracking-tight text-cream sm:text-4xl">
             Proyectos
           </h2>
-          <div className="mt-16 flex flex-nowrap items-center justify-center overflow-x-auto px-8 pb-4">
+          <div className="no-scrollbar mt-16 flex flex-nowrap items-center justify-center overflow-x-auto px-8 pb-4">
             {PROJECTS.map((p, i) => {
               const Icon = p.icon;
               const offset = i - centerIndex;

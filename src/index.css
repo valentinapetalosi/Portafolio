@@ -155,6 +155,15 @@ h4 {
   animation: bob 3.6s ease-in-out infinite;
 }
 
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .stamp-edge {
   mask-image:
     radial-gradient(circle 9px at 6% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
