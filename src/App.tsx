@@ -169,45 +169,45 @@ function App() {
         </section>
 
         {/* Projects carousel */}
-        <section id="trabajos" className="overflow-x-clip px-6 py-16 sm:px-10 sm:py-20">
-          <h2 className="text-center font-display text-3xl tracking-tight sm:text-4xl">
+        <section id="trabajos" className="overflow-x-clip bg-ink px-6 py-16 sm:px-10 sm:py-24">
+          <h2 className="text-center font-display text-3xl tracking-tight text-cream sm:text-4xl">
             Proyectos
           </h2>
-          <div className="mt-12 flex flex-nowrap items-center justify-center overflow-x-auto px-8 pb-4 sm:flex-wrap sm:overflow-visible sm:px-0">
+          <div className="mt-16 flex flex-nowrap items-center justify-center overflow-x-auto px-8 pb-4">
             {PROJECTS.map((p, i) => {
               const Icon = p.icon;
               const offset = i - centerIndex;
               const isCenter = offset === 0;
               const rotate = offset * 6;
-              const translateY = Math.abs(offset) * 28;
+              const translateY = Math.abs(offset) * 56;
               return (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setSelected(i)}
-                  className={`${p.bg} relative flex w-40 shrink-0 flex-col gap-3 rounded-3xl p-4 text-left shadow-md transition-transform duration-200 first:ml-0 -ml-8 hover:z-20 hover:-translate-y-2 focus-visible:z-20 sm:w-56 sm:-ml-14 sm:p-5`}
+                  className={`${p.bg} stamp-edge relative flex w-80 shrink-0 flex-col gap-4 p-6 text-left shadow-md transition-transform duration-200 first:ml-0 -ml-16 hover:z-20 hover:-translate-y-2 focus-visible:z-20 sm:w-[28rem] sm:-ml-28 sm:p-8`}
                   style={{
                     transform: `rotate(${rotate}deg) translateY(${translateY}px)`,
                     zIndex: 10 - Math.abs(offset),
                   }}
                 >
                   <div>
-                    <h3 className="font-display text-lg font-bold sm:text-2xl">
+                    <h3 className="font-display text-2xl font-bold sm:text-4xl">
                       {p.client}
                     </h3>
                     {isCenter && (
                       <>
-                        <p className="font-sans text-sm text-ink/80">
+                        <p className="font-sans text-base text-ink/80 sm:text-lg">
                           {p.description}
                         </p>
-                        <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
+                        <p className="mt-1 font-sans text-sm font-medium uppercase tracking-wide text-ink/50">
                           {p.year}
                         </p>
                       </>
                     )}
                   </div>
                   <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
-                    <Icon />
+                    <Icon className="h-24 w-24 sm:h-32 sm:w-32" />
                   </div>
                 </button>
               );

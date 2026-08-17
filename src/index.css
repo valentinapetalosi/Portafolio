@@ -154,3 +154,52 @@ h4 {
 .animate-flyby .bob {
   animation: bob 3.6s ease-in-out infinite;
 }
+
+.stamp-edge {
+  mask-image:
+    radial-gradient(circle 9px at 6% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 22% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 38% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 54% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 70% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 86% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 6% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 22% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 38% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 54% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 70% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 86% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 14%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 38%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 62%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 86%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 14%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 38%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 62%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 86%, transparent 0 9px, black calc(9px + 1px) 100%);
+  -webkit-mask-image:
+    radial-gradient(circle 9px at 6% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 22% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 38% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 54% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 70% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 86% 0%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 6% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 22% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 38% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 54% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 70% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 86% 100%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 14%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 38%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 62%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 0% 86%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 14%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 38%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 62%, transparent 0 9px, black calc(9px + 1px) 100%),
+    radial-gradient(circle 9px at 100% 86%, transparent 0 9px, black calc(9px + 1px) 100%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in, source-in, source-in, source-in, source-in, source-in, source-in,
+    source-in, source-in, source-in, source-in, source-in, source-in, source-in, source-in, source-in,
+    source-in, source-in, source-in, source-in;
+}

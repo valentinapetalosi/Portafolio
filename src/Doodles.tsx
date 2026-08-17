@@ -1,6 +1,6 @@
-export function Sun() {
+export function Sun({ className = "h-16 w-16" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 100 100" className="h-16 w-16" fill="none">
+    <svg viewBox="0 0 100 100" className={className} fill="none">
       <circle cx="50" cy="50" r="22" fill="#16140f" />
       {Array.from({ length: 12 }).map((_, i) => {
         const angle = (i * Math.PI) / 6;
@@ -25,9 +25,9 @@ export function Sun() {
   );
 }
 
-export function Flower() {
+export function Flower({ className = "h-16 w-16" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 100 100" className="h-16 w-16" fill="none">
+    <svg viewBox="0 0 100 100" className={className} fill="none">
       {Array.from({ length: 6 }).map((_, i) => {
         const angle = (i * Math.PI) / 3;
         const cx = 50 + Math.cos(angle) * 20;
@@ -39,9 +39,9 @@ export function Flower() {
   );
 }
 
-export function Star() {
+export function Star({ className = "h-16 w-16" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 100 100" className="h-16 w-16" fill="none">
+    <svg viewBox="0 0 100 100" className={className} fill="none">
       <path
         d="M50 8 L61 39 L94 39 L67 58 L78 90 L50 70 L22 90 L33 58 L6 39 L39 39 Z"
         fill="#16140f"
@@ -50,9 +50,9 @@ export function Star() {
   );
 }
 
-export function Brush() {
+export function Brush({ className = "h-16 w-16" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 100 100" className="h-16 w-16" fill="none">
+    <svg viewBox="0 0 100 100" className={className} fill="none">
       <rect x="44" y="8" width="12" height="42" rx="6" fill="#16140f" />
       <path
         d="M30 50 Q50 40 70 50 L64 78 Q50 88 36 78 Z"
@@ -63,9 +63,9 @@ export function Brush() {
   );
 }
 
-export function Heart() {
+export function Heart({ className = "h-16 w-16" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 100 100" className="h-16 w-16" fill="none">
+    <svg viewBox="0 0 100 100" className={className} fill="none">
       <path
         d="M50 88 C20 66 6 46 6 28 C6 12 18 4 30 4 C40 4 47 10 50 18 C53 10 60 4 70 4 C82 4 94 12 94 28 C94 46 80 66 50 88 Z"
         fill="#16140f"
