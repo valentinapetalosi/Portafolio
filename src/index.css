@@ -1,8 +1,64 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Roca";
+  src:
+    url("./assets/fonts/RocaOne-Rg.woff2") format("woff2"),
+    url("./assets/fonts/RocaOne-Rg.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roca";
+  src:
+    url("./assets/fonts/RocaOne-It.woff2") format("woff2"),
+    url("./assets/fonts/RocaOne-It.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roca";
+  src:
+    url("./assets/fonts/RocaOne-Bold.woff2") format("woff2"),
+    url("./assets/fonts/RocaOne-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Roca";
+  src:
+    url("./assets/fonts/RocaOne-Hv.woff2") format("woff2"),
+    url("./assets/fonts/RocaOne-Hv.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("./assets/fonts/Karla.ttf") format("truetype-variations");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Karla";
+  src: url("./assets/fonts/KarlaItalic.ttf") format("truetype-variations");
+  font-weight: 200 800;
+  font-style: italic;
+  font-display: swap;
+}
+
 @theme {
-  --font-display: "Fraunces", serif;
-  --font-sans: "Space Grotesk", sans-serif;
+  --font-display: "Roca", "Fraunces", serif;
+  --font-sans: "Karla", "Space Grotesk", sans-serif;
 
   --color-cream: #faf3ea;
   --color-ink: #16140f;
@@ -20,6 +76,19 @@ body {
   background-color: var(--color-cream);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  cursor: url("./assets/flower-cursor.png") 20 20, url("./assets/flower-cursor.svg") 16 16, auto;
+}
+
+a,
+button {
+  cursor: url("./assets/flower-cursor.png") 20 20, url("./assets/flower-cursor.svg") 16 16, pointer;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
 }
 
 .text-outline {

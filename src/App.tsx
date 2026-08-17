@@ -1,4 +1,5 @@
 import { Brush, Flower, Heart, Squiggle, Star, Sun } from "./Doodles";
+import linaje from "./assets/linaje.webp";
 
 const CLIENTS = [
   "Páramo Impacta",
@@ -28,10 +29,17 @@ const blocks = [
 
 function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-cream text-ink">
+    <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
+      <img
+        src={linaje}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 h-full w-full object-cover opacity-50"
+      />
+
       {/* Nav */}
-      <header className="flex items-center justify-between px-6 py-5 sm:px-10">
-        <a href="#top" className="font-display text-xl font-semibold tracking-tight">
+      <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
+        <a href="#top" className="font-display text-xl font-bold tracking-tight">
           Valentina Petalosi
         </a>
         <nav className="hidden items-center gap-8 font-sans text-sm font-medium sm:flex">
@@ -53,7 +61,7 @@ function App() {
         </a>
       </header>
 
-      <main id="top">
+      <main id="top" className="relative z-10">
         {/* Color strip */}
         <section className="px-6 pt-4 sm:px-10">
           <div className="flex gap-4 overflow-x-auto pb-2">
@@ -82,7 +90,7 @@ function App() {
         <section id="sobre-mi" className="px-6 pb-16 pt-10 sm:px-10 sm:pt-16">
           <h1 className="max-w-4xl font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
             <span className="italic">¡Hola!</span> Soy{" "}
-            <span className="font-semibold">Valentina Petalosi</span>,
+            <span className="font-bold">Valentina Petalosi</span>,
             bienvenid<span className="text-outline">@</span> a mi{" "}
             <span className="relative inline-block">
               mundo
