@@ -1,5 +1,4 @@
-import { Brush, Flower, Heart, Squiggle, Star, Sun } from "./Doodles";
-import linaje from "./assets/linaje.webp";
+import { Squiggle } from "./Doodles";
 
 const CLIENTS = [
   "Páramo Impacta",
@@ -10,33 +9,9 @@ const CLIENTS = [
   "WWF",
 ];
 
-const blocks = [
-  { bg: "bg-pink", content: <Flower />, tilt: "-rotate-2" },
-  { bg: "bg-blue", content: <Star />, tilt: "rotate-1" },
-  {
-    bg: "bg-ink",
-    content: (
-      <span className="rounded-full bg-cream px-6 py-3 font-display text-lg italic text-ink">
-        Hola ✦
-      </span>
-    ),
-    tilt: "-rotate-1",
-  },
-  { bg: "bg-sun", content: <Sun />, tilt: "rotate-2" },
-  { bg: "bg-green", content: <Brush />, tilt: "-rotate-1" },
-  { bg: "bg-pink", content: <Heart />, tilt: "rotate-2" },
-];
-
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
-      <img
-        src={linaje}
-        alt=""
-        aria-hidden="true"
-        className="pointer-events-none fixed inset-0 h-full w-full object-cover opacity-50"
-      />
-
       {/* Nav */}
       <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
         <a href="#top" className="font-display text-xl font-bold tracking-tight">
@@ -62,23 +37,8 @@ function App() {
       </header>
 
       <main id="top" className="relative z-10">
-        {/* Color strip */}
-        <section className="px-6 pt-4 sm:px-10">
-          <div className="flex gap-4 overflow-x-auto pb-2">
-            {blocks.map((b, i) => (
-              <div
-                key={i}
-                className={`animate-float ${b.tilt} ${b.bg} flex h-40 w-40 shrink-0 items-center justify-center rounded-3xl shadow-sm sm:h-48 sm:w-52`}
-                style={{ animationDelay: `${i * 0.3}s` }}
-              >
-                {b.content}
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* Intro copy */}
-        <section className="px-6 pt-10 sm:px-10">
+        <section className="px-6 pt-16 sm:px-10 sm:pt-20">
           <p className="max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
             Ilustro para marcas que quieren decir algo con color, textura y
             calidez. Cada proyecto es una excusa para contar una historia
