@@ -1,4 +1,4 @@
-import { Squiggle } from "./Doodles";
+import { Brush, Flower, Heart, InstagramIcon, Squiggle, Star, Sun } from "./Doodles";
 import mujerVoladora from "./assets/mujer-voladora.webp";
 import fotoPortafolio from "./assets/foto-portafolio.webp";
 import logoValentina from "./assets/logo-valentina.webp";
@@ -22,6 +22,44 @@ const CHIP_COLORS = [
   "bg-chip-sage",
 ];
 
+const PROJECTS = [
+  {
+    client: "AARIMO",
+    description: "Ilustración para landing page",
+    year: "2025",
+    bg: "bg-chip-teal",
+    icon: Flower,
+  },
+  {
+    client: "Páramo Impacta",
+    description: "Próximamente",
+    year: "2024",
+    bg: "bg-chip-coral",
+    icon: Sun,
+  },
+  {
+    client: "WWF",
+    description: "Próximamente",
+    year: "2024",
+    bg: "bg-chip-cobalt",
+    icon: Star,
+  },
+  {
+    client: "Profamilia",
+    description: "Próximamente",
+    year: "2023",
+    bg: "bg-chip-lilac",
+    icon: Heart,
+  },
+  {
+    client: "Ana María Cosméticos",
+    description: "Próximamente",
+    year: "2023",
+    bg: "bg-chip-rose",
+    icon: Brush,
+  },
+];
+
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
@@ -34,12 +72,31 @@ function App() {
         <a href="#top" className="block">
           <img src={logoValentina} alt="Valentina Petalosi" className="h-10 sm:h-12" />
         </a>
-        <a
-          href="#contacto"
-          className="rounded-full border border-ink bg-cream px-5 py-2 text-sm font-medium transition hover:bg-ink hover:text-cream"
-        >
-          Contáctame
-        </a>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href="https://www.instagram.com/petalosi.co"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Instagram de Valentina Petalosi"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-ink bg-cream transition hover:bg-ink hover:text-cream"
+          >
+            <InstagramIcon />
+          </a>
+          <a
+            href="mailto:valentinapetalosi@gmail.com"
+            className="rounded-full border border-ink bg-cream px-4 py-2 text-sm font-medium transition hover:bg-ink hover:text-cream sm:px-5"
+          >
+            Email
+          </a>
+          <a
+            href="https://api.whatsapp.com/send/?phone=573054541737&text&type=phone_number&app_absent=0"
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-ink bg-cream px-4 py-2 text-sm font-medium transition hover:bg-ink hover:text-cream sm:px-5"
+          >
+            Contáctame
+          </a>
+        </div>
       </header>
 
       <main id="top" className="relative z-10">
@@ -91,6 +148,37 @@ function App() {
                 </span>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* Projects carousel */}
+        <section id="trabajos" className="px-6 py-16 sm:px-10 sm:py-20">
+          <h2 className="font-display text-3xl tracking-tight sm:text-4xl">
+            Proyectos
+          </h2>
+          <div className="mt-8 flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4">
+            {PROJECTS.map((p, i) => {
+              const Icon = p.icon;
+              return (
+                <article
+                  key={i}
+                  className={`${p.bg} flex w-72 shrink-0 snap-start flex-col gap-4 rounded-3xl p-5 shadow-sm sm:w-80`}
+                >
+                  <div>
+                    <h3 className="font-display text-xl font-bold sm:text-2xl">
+                      {p.client}
+                    </h3>
+                    <p className="font-sans text-sm text-ink/80">{p.description}</p>
+                    <p className="mt-1 font-sans text-xs font-medium uppercase tracking-wide text-ink/50">
+                      {p.year}
+                    </p>
+                  </div>
+                  <div className="flex aspect-[4/3] items-center justify-center rounded-2xl bg-cream/90">
+                    <Icon />
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </section>
       </main>
