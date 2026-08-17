@@ -1,4 +1,5 @@
 import { Squiggle } from "./Doodles";
+import mujerVoladora from "./assets/mujer-voladora.webp";
 
 const CLIENTS = [
   "Páramo Impacta",
@@ -12,6 +13,10 @@ const CLIENTS = [
 function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
+      <div className="animate-flyby pointer-events-none fixed left-0 top-24 z-20 w-56 sm:w-72 md:w-80">
+        <img src={mujerVoladora} alt="" aria-hidden="true" className="bob w-full" />
+      </div>
+
       {/* Nav */}
       <header className="relative z-10 flex items-center justify-between px-6 py-5 sm:px-10">
         <a href="#top" className="font-display text-xl font-bold tracking-tight">
