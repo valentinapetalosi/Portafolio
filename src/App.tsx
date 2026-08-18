@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Brush, Flower, Heart, InstagramIcon, Squiggle, Star, Sun } from "./Doodles";
+import { Brush, Flower, Heart, InstagramIcon, Star, Sun } from "./Doodles";
 import mujerVoladora from "./assets/mujer-voladora.webp";
-import fotoPortafolio from "./assets/foto-portafolio.webp";
+import linajeHero from "./assets/linaje-hero.webp";
 import logoValentina from "./assets/logo-valentina.webp";
 import isotipoCream from "./assets/isotipo-cream.webp";
 import aarimoLaptop from "./assets/projects/aarimo-cover.webp";
@@ -147,32 +147,23 @@ function App() {
       </header>
 
       <main id="top" className="relative z-10">
-        {/* Headline + intro copy */}
-        <section id="sobre-mi" className="grid md:grid-cols-[minmax(280px,38%)_1fr]">
-          <div className="bg-chip-coral">
-            <img
-              src={fotoPortafolio}
-              alt="Valentina Petalosi en su estudio"
-              className="h-full max-h-[420px] w-full object-cover md:max-h-none"
-            />
-          </div>
-          <div className="flex flex-col justify-center px-6 py-12 sm:px-10 sm:py-16 md:py-20">
-            <h1 className="font-display text-4xl leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
-              <span className="italic">¡Hola!</span> Soy{" "}
-              <span className="font-bold">Valentina Petalosi</span>,
-              bienvenid<span className="text-outline">@</span> a mi{" "}
-              <span className="relative inline-block">
-                mundo
-                <Squiggle className="absolute -bottom-2 left-0 h-4 w-full text-sun" />
-              </span>{" "}
-              ilustrado.
-            </h1>
-            <p className="mt-8 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
-              Hago proyectos de ilustración para darle vida a tus productos,
-              documentos institucionales, campañas, empaques y redes
-              sociales.
-            </p>
-          </div>
+        {/* Hero illustration */}
+        <section id="sobre-mi" className="bg-sage px-6 pb-12 pt-14 text-center sm:px-10 sm:pb-16 sm:pt-20">
+          <h1 className="font-sans text-2xl text-ink sm:text-3xl">
+            Bienvenid<span className="text-outline">@</span> al mundo ilustrado de
+          </h1>
+          <p className="mt-1 font-script text-5xl leading-tight text-ink sm:text-7xl">
+            Valentina Petalosi
+          </p>
+          <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
+            Hago proyectos de ilustración para darle vida a tus productos,
+            documentos institucionales, campañas, empaques y redes sociales.
+          </p>
+          <img
+            src={linajeHero}
+            alt="Ilustración de Valentina Petalosi"
+            className="mx-auto mt-10 w-full max-w-4xl"
+          />
         </section>
 
         {/* Clients marquee */}

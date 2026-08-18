@@ -59,6 +59,7 @@
 @theme {
   --font-display: "gardein", "Roca", "Fraunces", serif;
   --font-sans: "Karla", "Space Grotesk", sans-serif;
+  --font-script: "Give You Glory", cursive;
 
   --color-cream: #faf3ea;
   --color-ink: #16140f;
@@ -66,6 +67,7 @@
   --color-blue: #6f8cf2;
   --color-green: #7fd992;
   --color-sun: #f6d24a;
+  --color-sage: #80afa3;
 
   --color-chip-rose: #fa82c0;
   --color-chip-cobalt: #4088de;
