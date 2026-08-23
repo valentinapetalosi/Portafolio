@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Brush, Flower, Heart, InstagramIcon, Star, Sun } from "./Doodles";
-import mujerVoladora from "./assets/mujer-voladora.webp";
 import logoValentina from "./assets/logo-valentina.webp";
 import portadaBase from "./assets/portada/portada-base.webp";
 import starBigL from "./assets/portada/star-big-l.webp";
@@ -125,46 +124,45 @@ function App() {
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
-      <div className="animate-flyby pointer-events-none fixed left-0 top-24 z-20 w-56 sm:w-72 md:w-80">
-        <img src={mujerVoladora} alt="" aria-hidden="true" className="bob w-full" />
-      </div>
-
       {/* Nav */}
-      <header className="relative z-10 flex items-center justify-between bg-blue px-6 py-4 sm:px-10">
+      <header className="relative z-10 grid grid-cols-[auto_1fr_auto] items-center gap-4 bg-ink px-6 py-4 sm:px-10">
         <a href="#top" className="block">
           <img src={logoValentina} alt="Valentina Petalosi" className="h-10 sm:h-12" />
         </a>
-        <div className="flex items-center gap-2 sm:gap-3">
-          <a
-            href="https://www.instagram.com/petalosi.co"
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Instagram de Valentina Petalosi"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-ink bg-cream transition hover:bg-ink hover:text-cream"
-          >
-            <InstagramIcon />
+        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-sans text-xs font-medium text-cream sm:gap-x-8 sm:text-sm">
+          <a href="#top" className="transition hover:opacity-70">
+            Inicio
           </a>
-          <a
-            href="mailto:valentinapetalosi@gmail.com"
-            className="rounded-full border border-ink bg-cream px-4 py-2 text-sm font-medium transition hover:bg-ink hover:text-cream sm:px-5"
-          >
-            Email
+          <a href="#sobre-mi" className="transition hover:opacity-70">
+            Sobre mí
+          </a>
+          <a href="#trabajos" className="transition hover:opacity-70">
+            Proyectos
           </a>
           <a
             href="https://api.whatsapp.com/send/?phone=573054541737&text&type=phone_number&app_absent=0"
             target="_blank"
             rel="noreferrer"
-            className="rounded-full border border-ink bg-cream px-4 py-2 text-sm font-medium transition hover:bg-ink hover:text-cream sm:px-5"
+            className="transition hover:opacity-70"
           >
             Contáctame
           </a>
-        </div>
+        </nav>
+        <a
+          href="https://www.instagram.com/petalosi.co"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram de Valentina Petalosi"
+          className="flex h-10 w-10 items-center justify-center rounded-full border border-cream text-cream transition hover:bg-cream hover:text-ink"
+        >
+          <InstagramIcon />
+        </a>
       </header>
 
       <main id="top" className="relative z-10">
         {/* Hero illustration */}
         <section id="sobre-mi" className="bg-[#06462e]">
-          <div className="relative mx-auto w-full max-w-6xl">
+          <div className="relative w-full">
             <img
               src={portadaBase}
               alt="Ilustración de Valentina Petalosi"
@@ -189,11 +187,15 @@ function App() {
             ))}
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-              <h1 className="font-display text-xl leading-tight text-cream sm:text-3xl md:text-4xl lg:text-5xl">
-                Bienvenid<span className="text-cream">@</span> a mi mundo
-                ilustrado
+              <h1 className="font-display leading-tight text-cream">
+                <span className="block text-lg sm:text-2xl md:text-3xl lg:text-4xl">
+                  Bienvenid@
+                </span>
+                <span className="block text-lg sm:text-2xl md:text-3xl lg:text-4xl">
+                  a mi mundo ilustrado
+                </span>
               </h1>
-              <p className="mt-2 max-w-[26ch] font-sans text-[0.6rem] leading-snug text-cream/85 sm:mt-4 sm:max-w-sm sm:text-sm md:text-base">
+              <p className="mt-2 max-w-[24ch] font-sans text-[0.55rem] leading-snug text-cream sm:mt-4 sm:max-w-sm sm:text-sm md:text-base">
                 Creo ilustraciones y universos creativos inspirados en la
                 naturaleza y la fuerza femenina
               </p>
