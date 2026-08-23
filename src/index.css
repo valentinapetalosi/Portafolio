@@ -157,6 +157,21 @@ h4 {
   animation: bob 3.6s ease-in-out infinite;
 }
 
+@keyframes spin-star {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.spin-star {
+  animation-name: spin-star;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;

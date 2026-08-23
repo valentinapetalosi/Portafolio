@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import { Brush, Flower, Heart, InstagramIcon, Star, Sun } from "./Doodles";
 import mujerVoladora from "./assets/mujer-voladora.webp";
-import linajeHero from "./assets/linaje-hero.webp";
 import logoValentina from "./assets/logo-valentina.webp";
+import portadaBase from "./assets/portada/portada-base.webp";
+import starBigL from "./assets/portada/star-big-l.webp";
+import starBigR from "./assets/portada/star-big-r.webp";
+import starDiamondL from "./assets/portada/star-diamond-l.webp";
+import starDiamondR from "./assets/portada/star-diamond-r.webp";
+import starSparkL from "./assets/portada/star-spark-l.webp";
+import starSparkR from "./assets/portada/star-spark-r.webp";
 import isotipoCream from "./assets/isotipo-cream.webp";
 import aarimoLaptop from "./assets/projects/aarimo-cover.webp";
 import aarimo1 from "./assets/projects/aarimo-1.webp";
@@ -91,6 +97,15 @@ const PROJECTS: Project[] = [
   },
 ];
 
+const STARS = [
+  { src: starBigL, left: 25, top: 14.583, width: 4.1667, duration: "9s" },
+  { src: starBigR, left: 75, top: 14.583, width: 4.1667, duration: "10s", reverse: true },
+  { src: starDiamondL, left: 10.729, top: 42.708, width: 2.29, duration: "6s", reverse: true },
+  { src: starDiamondR, left: 89.271, top: 42.708, width: 2.29, duration: "6.5s" },
+  { src: starSparkL, left: 20.417, top: 15.833, width: 3.75, duration: "7.5s" },
+  { src: starSparkR, left: 78.542, top: 18.75, width: 3.3333, duration: "8s", reverse: true },
+];
+
 function App() {
   const [selected, setSelected] = useState<number | null>(null);
   const centerIndex = Math.floor(PROJECTS.length / 2);
@@ -148,22 +163,42 @@ function App() {
 
       <main id="top" className="relative z-10">
         {/* Hero illustration */}
-        <section id="sobre-mi" className="bg-sage px-6 pb-12 pt-14 text-center sm:px-10 sm:pb-16 sm:pt-20">
-          <h1 className="font-sans text-2xl text-ink sm:text-3xl">
-            Bienvenid<span className="text-outline">@</span> al mundo ilustrado de
-          </h1>
-          <p className="mt-1 font-script text-5xl leading-tight text-ink sm:text-7xl">
-            Valentina Petalosi
-          </p>
-          <p className="mx-auto mt-6 max-w-xl font-sans text-base leading-relaxed text-ink/70 sm:text-lg">
-            Hago proyectos de ilustración para darle vida a tus productos,
-            documentos institucionales, campañas, empaques y redes sociales.
-          </p>
-          <img
-            src={linajeHero}
-            alt="Ilustración de Valentina Petalosi"
-            className="mx-auto mt-10 w-full max-w-4xl"
-          />
+        <section id="sobre-mi" className="bg-[#06462e]">
+          <div className="relative mx-auto w-full max-w-6xl">
+            <img
+              src={portadaBase}
+              alt="Ilustración de Valentina Petalosi"
+              className="block w-full"
+            />
+
+            {STARS.map((s, i) => (
+              <img
+                key={i}
+                src={s.src}
+                alt=""
+                aria-hidden="true"
+                className="spin-star absolute"
+                style={{
+                  left: `${s.left}%`,
+                  top: `${s.top}%`,
+                  width: `${s.width}%`,
+                  animationDuration: s.duration,
+                  animationDirection: s.reverse ? "reverse" : "normal",
+                }}
+              />
+            ))}
+
+            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+              <h1 className="font-display text-xl leading-tight text-cream sm:text-3xl md:text-4xl lg:text-5xl">
+                Bienvenid<span className="text-cream">@</span> a mi mundo
+                ilustrado
+              </h1>
+              <p className="mt-2 max-w-[26ch] font-sans text-[0.6rem] leading-snug text-cream/85 sm:mt-4 sm:max-w-sm sm:text-sm md:text-base">
+                Creo ilustraciones y universos creativos inspirados en la
+                naturaleza y la fuerza femenina
+              </p>
+            </div>
+          </div>
         </section>
 
         {/* Clients marquee */}
