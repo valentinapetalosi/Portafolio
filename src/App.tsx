@@ -8,6 +8,10 @@ import starDiamondL from "./assets/portada/star-diamond-l.webp";
 import starDiamondR from "./assets/portada/star-diamond-r.webp";
 import starSparkL from "./assets/portada/star-spark-l.webp";
 import starSparkR from "./assets/portada/star-spark-r.webp";
+import starPinwheelL from "./assets/portada/star-pinwheel-l.webp";
+import starPinwheelR from "./assets/portada/star-pinwheel-r.webp";
+import starPinkL from "./assets/portada/star-pink-l.webp";
+import starPinkR from "./assets/portada/star-pink-r.webp";
 import isotipoCream from "./assets/isotipo-cream.webp";
 import aarimoLaptop from "./assets/projects/aarimo-cover.webp";
 import aarimo1 from "./assets/projects/aarimo-1.webp";
@@ -103,6 +107,10 @@ const STARS = [
   { src: starDiamondR, left: 89.271, top: 42.708, width: 2.29, duration: "6.5s" },
   { src: starSparkL, left: 20.417, top: 15.833, width: 3.75, duration: "7.5s" },
   { src: starSparkR, left: 78.542, top: 18.75, width: 3.3333, duration: "8s", reverse: true },
+  { src: starPinwheelL, left: 13.958, top: 20.625, width: 11.667, duration: "14s" },
+  { src: starPinwheelR, left: 86.042, top: 20.625, width: 11.667, duration: "15s", reverse: true },
+  { src: starPinkL, left: 9.167, top: 31.667, width: 2.917, duration: "5.5s", reverse: true },
+  { src: starPinkR, left: 90.833, top: 31.667, width: 2.917, duration: "6s" },
 ];
 
 function App() {
@@ -188,14 +196,17 @@ function App() {
 
             <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
               <h1 className="font-display leading-tight text-cream">
-                <span className="block text-lg sm:text-2xl md:text-3xl lg:text-4xl">
-                  Bienvenid@
+                <span className="block text-base sm:text-4xl md:text-5xl lg:text-6xl">
+                  ¡Hola!
                 </span>
-                <span className="block text-lg sm:text-2xl md:text-3xl lg:text-4xl">
-                  a mi mundo ilustrado
+                <span className="block text-[0.6rem] sm:text-2xl md:text-3xl lg:text-4xl">
+                  Soy Valentina Petalosi,
+                </span>
+                <span className="block text-[0.6rem] sm:text-2xl md:text-3xl lg:text-4xl">
+                  bienvenid@ a mi mundo ilustrado
                 </span>
               </h1>
-              <p className="mt-2 max-w-[24ch] font-sans text-[0.55rem] leading-snug text-cream sm:mt-4 sm:max-w-sm sm:text-sm md:text-base">
+              <p className="mt-1 max-w-[22ch] font-sans text-[0.45rem] leading-snug text-cream sm:mt-4 sm:max-w-sm sm:text-2xl md:text-[1.75rem]">
                 Creo ilustraciones y universos creativos inspirados en la
                 naturaleza y la fuerza femenina
               </p>
