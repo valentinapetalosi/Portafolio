@@ -1,17 +1,83 @@
 import { useEffect, useState } from "react";
 import { Brush, Flower, Heart, InstagramIcon, Star, Sun } from "./Doodles";
-import logoValentina from "./assets/logo-valentina.webp";
-import portadaBase from "./assets/portada/portada-base.webp";
-import starBigL from "./assets/portada/star-big-l.webp";
-import starBigR from "./assets/portada/star-big-r.webp";
-import starDiamondL from "./assets/portada/star-diamond-l.webp";
-import starDiamondR from "./assets/portada/star-diamond-r.webp";
-import starSparkL from "./assets/portada/star-spark-l.webp";
-import starSparkR from "./assets/portada/star-spark-r.webp";
-import starPinwheelL from "./assets/portada/star-pinwheel-l.webp";
-import starPinwheelR from "./assets/portada/star-pinwheel-r.webp";
-import starPinkL from "./assets/portada/star-pink-l.webp";
-import starPinkR from "./assets/portada/star-pink-r.webp";
+import logoValentinaInk from "./assets/logo-valentina-ink.webp";
+import portadaBase2 from "./assets/portada2/portada-base.webp";
+import starFlower0 from "./assets/portada2/flower_0.webp";
+import starFlower1 from "./assets/portada2/flower_1.webp";
+import starFlower2 from "./assets/portada2/flower_2.webp";
+import starFlower3 from "./assets/portada2/flower_3.webp";
+import starFlower4 from "./assets/portada2/flower_4.webp";
+import starFlower5 from "./assets/portada2/flower_5.webp";
+import starFlower6 from "./assets/portada2/flower_6.webp";
+import starSpiky7 from "./assets/portada2/spiky_7.webp";
+import starFlower8 from "./assets/portada2/flower_8.webp";
+import starFlower9 from "./assets/portada2/flower_9.webp";
+import starFlower10 from "./assets/portada2/flower_10.webp";
+import starFlower11 from "./assets/portada2/flower_11.webp";
+import starFlower12 from "./assets/portada2/flower_12.webp";
+import starFlower13 from "./assets/portada2/flower_13.webp";
+import starFlower14 from "./assets/portada2/flower_14.webp";
+import starStar15 from "./assets/portada2/star_15.webp";
+import starStar16 from "./assets/portada2/star_16.webp";
+import starStar17 from "./assets/portada2/star_17.webp";
+import starStar18 from "./assets/portada2/star_18.webp";
+import starStar19 from "./assets/portada2/star_19.webp";
+import starStar20 from "./assets/portada2/star_20.webp";
+import starStar21 from "./assets/portada2/star_21.webp";
+import starStar22 from "./assets/portada2/star_22.webp";
+import starStar23 from "./assets/portada2/star_23.webp";
+import starStar24 from "./assets/portada2/star_24.webp";
+import starStar25 from "./assets/portada2/star_25.webp";
+import starStar26 from "./assets/portada2/star_26.webp";
+import starStar27 from "./assets/portada2/star_27.webp";
+import starStar28 from "./assets/portada2/star_28.webp";
+import starStar29 from "./assets/portada2/star_29.webp";
+import starStar30 from "./assets/portada2/star_30.webp";
+import starStar31 from "./assets/portada2/star_31.webp";
+import starStar32 from "./assets/portada2/star_32.webp";
+import starStar33 from "./assets/portada2/star_33.webp";
+import starPinwheel from "./assets/portada2/pinwheel.webp";
+import starBluestar from "./assets/portada2/bluestar.webp";
+
+const STARS2 = [
+  { src: starFlower0, left: 26.944, top: 5.606, width: 3.845, duration: "5s", reverse: true },
+  { src: starFlower1, left: 32.26, top: 7.836, width: 4.398, duration: "5.5s", reverse: false },
+  { src: starFlower2, left: 29.042, top: 13.155, width: 2.855, duration: "6s", reverse: true },
+  { src: starFlower3, left: 34.227, top: 15.651, width: 4.486, duration: "6.5s", reverse: false },
+  { src: starFlower4, left: 40.402, top: 19.947, width: 4.195, duration: "7s", reverse: true },
+  { src: starFlower5, left: 44.626, top: 24.1, width: 4.253, duration: "7.5s", reverse: false },
+  { src: starFlower6, left: 49.257, top: 23.322, width: 2.505, duration: "8s", reverse: true },
+  { src: starSpiky7, left: 43.912, top: 58.818, width: 6.263, duration: "9s", reverse: false },
+  { src: starFlower8, left: 39.907, top: 66.551, width: 4.078, duration: "10s", reverse: true },
+  { src: starFlower9, left: 48.311, top: 71.031, width: 2.767, duration: "11s", reverse: false },
+  { src: starFlower10, left: 33.673, top: 73.241, width: 6.059, duration: "12s", reverse: true },
+  { src: starFlower11, left: 38.538, top: 76.759, width: 2.796, duration: "13s", reverse: false },
+  { src: starFlower12, left: 22.575, top: 80.872, width: 5.651, duration: "14s", reverse: true },
+  { src: starFlower13, left: 28.954, top: 79.521, width: 2.796, duration: "15s", reverse: false },
+  { src: starFlower14, left: 34.066, top: 80.994, width: 4.049, duration: "16s", reverse: true },
+  { src: starStar15, left: 61.856, top: 9.349, width: 2.651, duration: "18s", reverse: false },
+  { src: starStar16, left: 73.653, top: 11.559, width: 2.709, duration: "5s", reverse: true },
+  { src: starStar17, left: 63.705, top: 13.093, width: 1.864, duration: "5.5s", reverse: false },
+  { src: starStar18, left: 76.668, top: 14.484, width: 2.214, duration: "6s", reverse: true },
+  { src: starStar19, left: 72.473, top: 16.223, width: 3.262, duration: "6.5s", reverse: false },
+  { src: starStar20, left: 62.016, top: 16.858, width: 3.437, duration: "7s", reverse: true },
+  { src: starStar21, left: 61.069, top: 21.42, width: 2.185, duration: "7.5s", reverse: false },
+  { src: starStar22, left: 71.104, top: 23.384, width: 1.631, duration: "8s", reverse: true },
+  { src: starStar23, left: 70.944, top: 44.824, width: 2.884, duration: "9s", reverse: false },
+  { src: starStar24, left: 62.759, top: 49.959, width: 2.243, duration: "10s", reverse: true },
+  { src: starStar25, left: 72.051, top: 53.519, width: 1.66, duration: "11s", reverse: false },
+  { src: starStar26, left: 78.27, top: 58.961, width: 3.612, duration: "12s", reverse: true },
+  { src: starStar27, left: 60.224, top: 66.182, width: 2.651, duration: "13s", reverse: false },
+  { src: starStar28, left: 79.449, top: 66.142, width: 2.126, duration: "14s", reverse: true },
+  { src: starStar29, left: 74.425, top: 67.921, width: 2.622, duration: "15s", reverse: false },
+  { src: starStar30, left: 75.342, top: 73.22, width: 3.525, duration: "16s", reverse: true },
+  { src: starStar31, left: 62.045, top: 76.125, width: 2.913, duration: "18s", reverse: false },
+  { src: starStar32, left: 64.506, top: 85.086, width: 2.01, duration: "5s", reverse: true },
+  { src: starStar33, left: 66.939, top: 90.548, width: 4.136, duration: "5.5s", reverse: false },
+  { src: starPinwheel, left: 19.662, top: 22.709, width: 13.108, duration: "6s", reverse: true },
+  { src: starBluestar, left: 16.021, top: 67.512, width: 11.652, duration: "6.5s", reverse: false },
+];
+
 import isotipoCream from "./assets/isotipo-cream.webp";
 import aarimoLaptop from "./assets/projects/aarimo-cover.webp";
 import aarimo1 from "./assets/projects/aarimo-1.webp";
@@ -100,19 +166,6 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const STARS = [
-  { src: starBigL, left: 25, top: 14.583, width: 4.1667, duration: "9s" },
-  { src: starBigR, left: 75, top: 14.583, width: 4.1667, duration: "10s", reverse: true },
-  { src: starDiamondL, left: 10.729, top: 42.708, width: 2.29, duration: "6s", reverse: true },
-  { src: starDiamondR, left: 89.271, top: 42.708, width: 2.29, duration: "6.5s" },
-  { src: starSparkL, left: 20.417, top: 15.833, width: 3.75, duration: "7.5s" },
-  { src: starSparkR, left: 78.542, top: 18.75, width: 3.3333, duration: "8s", reverse: true },
-  { src: starPinwheelL, left: 13.958, top: 20.625, width: 11.667, duration: "14s" },
-  { src: starPinwheelR, left: 86.042, top: 20.625, width: 11.667, duration: "15s", reverse: true },
-  { src: starPinkL, left: 9.167, top: 31.667, width: 2.917, duration: "5.5s", reverse: true },
-  { src: starPinkR, left: 90.833, top: 31.667, width: 2.917, duration: "6s" },
-];
-
 function App() {
   const [selected, setSelected] = useState<number | null>(null);
   const centerIndex = Math.floor(PROJECTS.length / 2);
@@ -133,51 +186,69 @@ function App() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-cream text-ink">
       {/* Nav */}
-      <header className="relative z-10 grid grid-cols-[auto_1fr_auto] items-center gap-4 bg-ink px-6 py-4 sm:px-10">
-        <a href="#top" className="block">
-          <img src={logoValentina} alt="Valentina Petalosi" className="h-10 sm:h-12" />
-        </a>
-        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-sans text-xs font-medium text-cream sm:gap-x-8 sm:text-sm">
-          <a href="#top" className="transition hover:opacity-70">
-            Inicio
+      <header className="relative z-10 p-2 sm:p-3">
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 rounded-xl border-[3px] border-nav-blue bg-cream px-6 py-4 sm:px-10">
+          <a href="#top" className="block">
+            <img src={logoValentinaInk} alt="Valentina Petalosi" className="h-10 sm:h-12" />
           </a>
-          <a href="#sobre-mi" className="transition hover:opacity-70">
-            Sobre mí
-          </a>
-          <a href="#trabajos" className="transition hover:opacity-70">
-            Proyectos
-          </a>
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-sans text-xs font-medium text-ink sm:gap-x-8 sm:text-sm">
+            <a href="#top" className="transition hover:opacity-60">
+              Inicio
+            </a>
+            <a href="#sobre-mi" className="transition hover:opacity-60">
+              Sobre mí
+            </a>
+            <a href="#trabajos" className="transition hover:opacity-60">
+              Proyectos
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=573054541737&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noreferrer"
+              className="transition hover:opacity-60"
+            >
+              Contáctame
+            </a>
+          </nav>
           <a
-            href="https://api.whatsapp.com/send/?phone=573054541737&text&type=phone_number&app_absent=0"
+            href="https://www.instagram.com/petalosi.co"
             target="_blank"
             rel="noreferrer"
-            className="transition hover:opacity-70"
+            aria-label="Instagram de Valentina Petalosi"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-ink text-ink transition hover:bg-ink hover:text-cream"
           >
-            Contáctame
+            <InstagramIcon />
           </a>
-        </nav>
-        <a
-          href="https://www.instagram.com/petalosi.co"
-          target="_blank"
-          rel="noreferrer"
-          aria-label="Instagram de Valentina Petalosi"
-          className="flex h-10 w-10 items-center justify-center rounded-full border border-cream text-cream transition hover:bg-cream hover:text-ink"
-        >
-          <InstagramIcon />
-        </a>
+        </div>
       </header>
 
       <main id="top" className="relative z-10">
         {/* Hero illustration */}
-        <section id="sobre-mi" className="bg-[#06462e]">
-          <div className="relative w-full">
+        <section id="sobre-mi" className="bg-[#06462e] px-6 pb-2 pt-12 text-center sm:pt-16">
+          <h1 className="font-display leading-tight text-cream">
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+              ¡Hola!
+            </span>
+            <span className="block text-lg sm:text-2xl md:text-3xl lg:text-4xl">
+              Soy Valentina Petalosi,
+            </span>
+            <span className="block text-lg sm:text-2xl md:text-3xl lg:text-4xl">
+              bienvenid@ a mi mundo ilustrado
+            </span>
+          </h1>
+          <p className="mx-auto mt-3 max-w-md font-sans text-sm leading-snug text-cream sm:mt-4 sm:text-2xl md:text-[1.75rem]">
+            Creo ilustraciones y universos creativos inspirados en la
+            naturaleza y la fuerza femenina
+          </p>
+
+          <div className="relative mx-auto mt-8 w-full max-w-5xl sm:mt-10">
             <img
-              src={portadaBase}
+              src={portadaBase2}
               alt="Ilustración de Valentina Petalosi"
               className="block w-full"
             />
 
-            {STARS.map((s, i) => (
+            {STARS2.map((s, i) => (
               <img
                 key={i}
                 src={s.src}
@@ -193,24 +264,6 @@ function App() {
                 }}
               />
             ))}
-
-            <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
-              <h1 className="font-display leading-tight text-cream">
-                <span className="block text-base sm:text-4xl md:text-5xl lg:text-6xl">
-                  ¡Hola!
-                </span>
-                <span className="block text-[0.6rem] sm:text-2xl md:text-3xl lg:text-4xl">
-                  Soy Valentina Petalosi,
-                </span>
-                <span className="block text-[0.6rem] sm:text-2xl md:text-3xl lg:text-4xl">
-                  bienvenid@ a mi mundo ilustrado
-                </span>
-              </h1>
-              <p className="mt-1 max-w-[22ch] font-sans text-[0.45rem] leading-snug text-cream sm:mt-4 sm:max-w-sm sm:text-2xl md:text-[1.75rem]">
-                Creo ilustraciones y universos creativos inspirados en la
-                naturaleza y la fuerza femenina
-              </p>
-            </div>
           </div>
         </section>
 
