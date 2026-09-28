@@ -4,7 +4,8 @@
   Pega TODO este bloque (estilos + script) en Tiendanube:
   Configuración › Códigos externos (sección de scripts / "código en el footer").
 
-  Para cambiar los productos, edita PRODUCT_IDS más abajo.
+  Productos: los más vendidos de los últimos 15 días (13–28 sep 2026).
+  Para cambiarlos, edita PRODUCT_IDS más abajo.
   El script lee nombre, foto, precio y descuento de los productos que ya
   se muestran en el home, así que precios y promos se actualizan solos.
   Si un producto no aparece en el home, usa los datos de FALLBACK.
@@ -18,10 +19,45 @@
     --pf-old: #a9a2c9;
     position: relative;
     z-index: 5;
-    margin-top: -120px;          /* cuánto se "sube" sobre el banner */
+    margin-top: -190px;          /* cuánto se "sube" sobre el banner */
     margin-bottom: 32px;
     padding: 0 24px;
     pointer-events: none;        /* deja clicar el banner entre tarjetas */
+  }
+  /* Título "Los favoritos" en una nubecita */
+  .pf-floating__head {
+    max-width: 1400px;
+    margin: 0 auto 18px;
+    text-align: left;            /* a la izquierda: no tapa el botón del banner */
+  }
+  .pf-cloud {
+    position: relative;
+    display: inline-block;
+    margin-top: 36px;            /* espacio para las "bolitas" de la nube */
+    padding: 12px 40px 14px;
+    background: var(--pf-card-bg);
+    border-radius: 999px;
+    filter: drop-shadow(0 10px 18px rgba(60, 20, 60, .2));
+    animation: pf-float 6s ease-in-out infinite;
+    animation-delay: -1s;
+  }
+  .pf-cloud::before,
+  .pf-cloud::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    background: var(--pf-card-bg);
+  }
+  .pf-cloud::before { width: 58px; height: 58px; top: -28px; left: 20%; }
+  .pf-cloud::after  { width: 78px; height: 78px; top: -40px; right: 18%; }
+  .pf-cloud__text {
+    position: relative;
+    margin: 0;
+    font-family: var(--heading-font, "Literata", serif);
+    font-size: 26px;
+    line-height: 1.2;
+    color: var(--pf-title);
   }
   .pf-floating__track {
     display: grid;
@@ -103,7 +139,12 @@
   }
   /* Celular: carrusel horizontal deslizable */
   @media (max-width: 767px) {
-    .pf-floating { margin-top: -24px; padding: 0; }
+    .pf-floating { margin-top: 0; padding: 0; }
+    .pf-floating__head { margin-bottom: 4px; padding: 0 16px; }
+    .pf-cloud { margin-top: 30px; padding: 10px 30px 12px; }
+    .pf-cloud::before { width: 46px; height: 46px; top: -22px; }
+    .pf-cloud::after  { width: 62px; height: 62px; top: -32px; }
+    .pf-cloud__text { font-size: 21px; }
     .pf-floating__track {
       display: flex;
       gap: 12px;
@@ -117,40 +158,46 @@
   }
   /* Sube los puntitos del carrusel para que no queden debajo de las tarjetas */
   @media (min-width: 768px) {
-    .pf-on .section-slideshow .swiper-pagination { bottom: 136px !important; }
+    .pf-on [data-store="home-slider"] .swiper-pagination { bottom: 206px !important; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .pf-card { animation: none; }
+    .pf-card, .pf-cloud { animation: none; }
   }
 </style>
 
 <script>
 (function () {
+  // ▼▼ Título de la sección ▼▼
+  var TITLE = 'Los favoritos';
+
   // ▼▼ Productos a destacar (IDs de Tiendanube, en el orden en que se muestran) ▼▼
-  var PRODUCT_IDS = ['241656553', '242367455', '241662783'];
+  // Más vendidos del 13 al 28 de sept. 2026. Todos empataron en 1 unidad,
+  // así que se eligieron los de las compras más recientes.
+  var PRODUCT_IDS = ['348267174', '284226623', '342868992'];
 
   // Datos de respaldo por si el producto no está en ninguna lista del home.
+  // "desc" se usa siempre como texto corto de la tarjeta.
   var FALLBACK = {
-    '241656553': {
-      name: 'Chaqueta Líbrame del Mal',
-      url: 'https://www.petalosi.co/productos/chaqueta-librame-del-mal/',
-      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/diseno-sin-titulo-1-fad4b765bc355fe61f17818219555859-480-0.webp',
-      desc: 'Impermeable, con estampado inspirado en el ritual de 7 plantas. Colaboración con Cavald.',
-      price: '$170.000', old: '$195.000'
+    '348267174': {
+      name: 'Portapinceles Ajolote',
+      url: 'https://www.petalosi.co/productos/portapinceles-tigre-copia-sd8b1/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/portapinceles-morado-5cdd168ada5a130cf117805043514422-480-0.webp',
+      desc: 'Organiza tus pinceles con estilo: trae una tira resistente para amarrarlo.',
+      price: '$65.000', old: ''
     },
-    '242367455': {
-      name: 'Camisa Criaturas del Bosque',
-      url: 'https://www.petalosi.co/productos/camisa-criaturas-del-bosque/',
-      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/dsc08399-96c181acf1a377d81c17818221549251-480-0.webp',
-      desc: 'Camisa oversize ilustrada, liviana y hecha por mujeres colombianas.',
-      price: '$80.000', old: '$160.000'
+    '284226623': {
+      name: 'Sombrero Trampolín',
+      url: 'https://www.petalosi.co/productos/sombrero-trampolin/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/img_0663-783031a662c4d9af3917537153928826-480-0.webp',
+      desc: 'Doble estampado, ligero y cómodo. Ideal para el sol colombiano.',
+      price: '$60.000', old: '$85.000'
     },
-    '241662783': {
-      name: 'Hoodie Amix',
-      url: 'https://www.petalosi.co/productos/hoodie-amix/',
-      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/hoodie-989a846cc3ecd06b2717818215654879-480-0.webp',
-      desc: 'Una prenda única y abrigadora para los días sin solecito.',
-      price: '$85.000', old: '$150.000'
+    '342868992': {
+      name: 'Bolso impermeable Cigüeña japonesa',
+      url: 'https://www.petalosi.co/productos/bolso-impermeable-flores-electricas-1xp3t/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/5-9ee68ecdbbb986d32e17782588752066-480-0.webp',
+      desc: 'Resistente y portátil, para la playa, el mercado o la oficina.',
+      price: '$80.000', old: ''
     }
   };
 
@@ -210,8 +257,10 @@
 
   function init() {
     if (document.querySelector('.pf-floating')) return;
-    var hero = document.querySelector('.section-slideshow') ||
-               document.querySelector('[data-store="home-slider"]');
+    // Se inserta justo después del carrusel (antes de apps como las reseñas).
+    var hero = document.querySelector('.section-slideshow [data-store="home-slider"]') ||
+               document.querySelector('[data-store="home-slider"]') ||
+               document.querySelector('.section-slideshow');
     if (!hero) return; // solo en el home
 
     var track = el('div', 'pf-floating__track');
@@ -223,11 +272,30 @@
     });
     if (!track.children.length) return;
 
-    var wrap = el('div', 'pf-floating');
-    wrap.setAttribute('aria-label', 'Productos destacados');
+    var wrap = el('section', 'pf-floating');
+    wrap.setAttribute('aria-label', TITLE);
+    var head = el('div', 'pf-floating__head');
+    var cloud = el('div', 'pf-cloud');
+    cloud.appendChild(el('h2', 'pf-cloud__text', TITLE));
+    head.appendChild(cloud);
+    wrap.appendChild(head);
     wrap.appendChild(track);
-    hero.parentNode.insertBefore(wrap, hero.nextSibling);
+    function place() {
+      if (hero.nextElementSibling !== wrap) hero.parentNode.insertBefore(wrap, hero.nextSibling);
+    }
+    place();
     document.body.classList.add('pf-on');
+
+    // Algunas apps (p. ej. reseñas) se insertan después y empujarían las
+    // tarjetas hacia abajo: durante unos segundos las devolvemos a su lugar.
+    if (window.MutationObserver) {
+      var moves = 0;
+      var obs = new MutationObserver(function () {
+        if (hero.nextElementSibling !== wrap && moves++ < 20) place();
+      });
+      obs.observe(hero.parentNode, { childList: true });
+      setTimeout(function () { obs.disconnect(); }, 15000);
+    }
   }
 
   if (document.readyState === 'loading') {
