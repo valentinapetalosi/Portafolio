@@ -19,15 +19,17 @@
     --pf-old: #a9a2c9;
     position: relative;
     z-index: 5;
-    margin-top: -190px;          /* cuánto se "sube" sobre el banner */
+    margin-top: -24px;           /* cuánto se montan las tarjetas sobre el banner */
     margin-bottom: 32px;
     padding: 0 24px;
     pointer-events: none;        /* deja clicar el banner entre tarjetas */
   }
-  /* Título "Los favoritos" en una nubecita */
+  /* Título "Los favoritos de la semana" en una nubecita */
   .pf-floating__head {
-    max-width: 1400px;
-    margin: 0 auto 18px;
+    position: absolute;          /* la nube va encima del banner, sin empujar las tarjetas */
+    bottom: 100%;
+    left: 24px;
+    margin-bottom: 14px;
     text-align: left;            /* a la izquierda: no tapa el botón del banner */
   }
   .pf-cloud {
@@ -140,7 +142,7 @@
   /* Celular: carrusel horizontal deslizable */
   @media (max-width: 767px) {
     .pf-floating { margin-top: 0; padding: 0; }
-    .pf-floating__head { margin-bottom: 4px; padding: 0 16px; }
+    .pf-floating__head { position: static; margin-bottom: 4px; padding: 0 16px; }
     .pf-cloud { margin-top: 30px; padding: 10px 30px 12px; }
     .pf-cloud::before { width: 46px; height: 46px; top: -22px; }
     .pf-cloud::after  { width: 62px; height: 62px; top: -32px; }
@@ -156,9 +158,10 @@
     .pf-floating__track::-webkit-scrollbar { display: none; }
     .pf-card { flex: 0 0 82%; scroll-snap-align: center; }
   }
-  /* Sube los puntitos del carrusel para que no queden debajo de las tarjetas */
+  /* En computador se esconden los puntitos del carrusel (quedarían debajo de
+     las tarjetas); las flechas siguen funcionando. */
   @media (min-width: 768px) {
-    .pf-on [data-store="home-slider"] .swiper-pagination { bottom: 206px !important; }
+    .pf-on [data-store="home-slider"] .swiper-pagination { display: none !important; }
   }
   @media (prefers-reduced-motion: reduce) {
     .pf-card, .pf-cloud { animation: none; }
@@ -168,7 +171,7 @@
 <script>
 (function () {
   // ▼▼ Título de la sección ▼▼
-  var TITLE = 'Los favoritos';
+  var TITLE = 'Los favoritos de la semana';
 
   // ▼▼ Productos a destacar (IDs de Tiendanube, en el orden en que se muestran) ▼▼
   // Más vendidos del 13 al 28 de sept. 2026. Todos empataron en 1 unidad,
