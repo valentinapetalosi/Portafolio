@@ -1,0 +1,239 @@
+<!--
+  Petalosi · Productos destacados flotando sobre el banner principal
+  -----------------------------------------------------------------
+  Pega TODO este bloque (estilos + script) en Tiendanube:
+  Configuración › Códigos externos (sección de scripts / "código en el footer").
+
+  Para cambiar los productos, edita PRODUCT_IDS más abajo.
+  El script lee nombre, foto, precio y descuento de los productos que ya
+  se muestran en el home, así que precios y promos se actualizan solos.
+  Si un producto no aparece en el home, usa los datos de FALLBACK.
+-->
+<style>
+  .pf-floating {
+    --pf-card-bg: #ffe3f3;
+    --pf-title: #ff5a1f;
+    --pf-text: #7a4f9a;
+    --pf-price: #5b5fb5;
+    --pf-old: #a9a2c9;
+    position: relative;
+    z-index: 5;
+    margin-top: -120px;          /* cuánto se "sube" sobre el banner */
+    margin-bottom: 32px;
+    padding: 0 24px;
+    pointer-events: none;        /* deja clicar el banner entre tarjetas */
+  }
+  .pf-floating__track {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .pf-card {
+    pointer-events: auto;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: var(--pf-card-bg);
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(60, 20, 60, .18);
+    color: inherit;
+    text-decoration: none !important;
+    transition: transform .25s ease, box-shadow .25s ease;
+    animation: pf-float 6s ease-in-out infinite;
+  }
+  .pf-card:nth-child(2) { animation-delay: -2s; }
+  .pf-card:nth-child(3) { animation-delay: -4s; }
+  .pf-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(60, 20, 60, .26);
+    animation-play-state: paused;
+  }
+  @keyframes pf-float {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -6px; }
+  }
+  .pf-card__img {
+    flex: 0 0 120px;
+    width: 120px;
+    height: 120px;
+    border-radius: 18px;
+    object-fit: cover;
+    background: #fff;
+  }
+  .pf-card__body { min-width: 0; }
+  .pf-card__name {
+    margin: 0 0 6px;
+    font-family: var(--heading-font, "Literata", serif);
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--pf-title);
+  }
+  .pf-card__desc {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--pf-text);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .pf-card__price {
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--pf-price);
+  }
+  .pf-card__old {
+    margin-left: 8px;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--pf-old);
+    text-decoration: line-through;
+  }
+
+  /* Tablet: tarjetas más compactas */
+  @media (max-width: 1100px) {
+    .pf-card { gap: 14px; padding: 14px; }
+    .pf-card__img { flex-basis: 88px; width: 88px; height: 88px; }
+    .pf-card__name { font-size: 17px; }
+    .pf-card__desc { display: none; }
+  }
+  /* Celular: carrusel horizontal deslizable */
+  @media (max-width: 767px) {
+    .pf-floating { margin-top: -24px; padding: 0; }
+    .pf-floating__track {
+      display: flex;
+      gap: 12px;
+      padding: 8px 16px 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+    }
+    .pf-floating__track::-webkit-scrollbar { display: none; }
+    .pf-card { flex: 0 0 82%; scroll-snap-align: center; }
+  }
+  /* Sube los puntitos del carrusel para que no queden debajo de las tarjetas */
+  @media (min-width: 768px) {
+    .pf-on .section-slideshow .swiper-pagination { bottom: 136px !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .pf-card { animation: none; }
+  }
+</style>
+
+<script>
+(function () {
+  // ▼▼ Productos a destacar (IDs de Tiendanube, en el orden en que se muestran) ▼▼
+  var PRODUCT_IDS = ['241656553', '242367455', '241662783'];
+
+  // Datos de respaldo por si el producto no está en ninguna lista del home.
+  var FALLBACK = {
+    '241656553': {
+      name: 'Chaqueta Líbrame del Mal',
+      url: 'https://www.petalosi.co/productos/chaqueta-librame-del-mal/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/diseno-sin-titulo-1-fad4b765bc355fe61f17818219555859-480-0.webp',
+      desc: 'Impermeable, con estampado inspirado en el ritual de 7 plantas. Colaboración con Cavald.',
+      price: '$170.000', old: '$195.000'
+    },
+    '242367455': {
+      name: 'Camisa Criaturas del Bosque',
+      url: 'https://www.petalosi.co/productos/camisa-criaturas-del-bosque/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/dsc08399-96c181acf1a377d81c17818221549251-480-0.webp',
+      desc: 'Camisa oversize ilustrada, liviana y hecha por mujeres colombianas.',
+      price: '$80.000', old: '$160.000'
+    },
+    '241662783': {
+      name: 'Hoodie Amix',
+      url: 'https://www.petalosi.co/productos/hoodie-amix/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/hoodie-989a846cc3ecd06b2717818215654879-480-0.webp',
+      desc: 'Una prenda única y abrigadora para los días sin solecito.',
+      price: '$85.000', old: '$150.000'
+    }
+  };
+
+  function readFromPage(id) {
+    var item = document.querySelector('.js-item-product[data-product-id="' + id + '"]');
+    if (!item) return null;
+    var data = {};
+    try {
+      var ld = item.querySelector('script[type="application/ld+json"]');
+      var info = JSON.parse(ld.textContent);
+      data.name = info.name;
+      data.url = info.offers && info.offers.url;
+      data.image = info.image;
+      data.desc = info.description;
+    } catch (e) { return null; }
+    try {
+      var variants = JSON.parse(item.getAttribute('data-variants') || '[]');
+      var available = variants.filter(function (v) { return v.available; });
+      var list = available.length ? available : variants;
+      list.sort(function (a, b) { return a.price_number - b.price_number; });
+      var cheapest = list[0];
+      if (cheapest) {
+        var varies = list.some(function (v) { return v.price_number !== cheapest.price_number; });
+        data.price = (varies ? 'Desde ' : '') + cheapest.price_short;
+        data.old = cheapest.compare_at_price_short || '';
+      }
+    } catch (e) {}
+    return data.name && data.url ? data : null;
+  }
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text) n.textContent = text;
+    return n;
+  }
+
+  function buildCard(p) {
+    var a = el('a', 'pf-card');
+    a.href = p.url;
+    var img = el('img', 'pf-card__img');
+    img.src = p.image;
+    img.alt = p.name;
+    img.loading = 'lazy';
+    var body = el('div', 'pf-card__body');
+    body.appendChild(el('h3', 'pf-card__name', p.name));
+    if (p.desc) body.appendChild(el('p', 'pf-card__desc', p.desc));
+    if (p.price) {
+      var price = el('div', 'pf-card__price', p.price);
+      if (p.old) price.appendChild(el('span', 'pf-card__old', p.old));
+      body.appendChild(price);
+    }
+    a.appendChild(img);
+    a.appendChild(body);
+    return a;
+  }
+
+  function init() {
+    if (document.querySelector('.pf-floating')) return;
+    var hero = document.querySelector('.section-slideshow') ||
+               document.querySelector('[data-store="home-slider"]');
+    if (!hero) return; // solo en el home
+
+    var track = el('div', 'pf-floating__track');
+    PRODUCT_IDS.forEach(function (id) {
+      var p = readFromPage(id) || FALLBACK[id];
+      // Si escribiste una descripción corta en FALLBACK, se usa esa.
+      if (p && FALLBACK[id] && FALLBACK[id].desc) p.desc = FALLBACK[id].desc;
+      if (p) track.appendChild(buildCard(p));
+    });
+    if (!track.children.length) return;
+
+    var wrap = el('div', 'pf-floating');
+    wrap.setAttribute('aria-label', 'Productos destacados');
+    wrap.appendChild(track);
+    hero.parentNode.insertBefore(wrap, hero.nextSibling);
+    document.body.classList.add('pf-on');
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
