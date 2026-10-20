@@ -1,12 +1,12 @@
   .pf-floating {
     /* Colores */
-    --pf-cloud-bg: #ffa2d5;      /* nube: rosado chicle */
-    --pf-cloud-text: #8f2a00;    /* texto de la nube: naranja quemado */
-    --pf-card-bg: #ffa2d5;       /* tarjetas: rosado chicle */
-    --pf-title: #8f2a00;         /* nombre del producto: naranja quemado */
-    --pf-text: #1a1a1a;          /* descripción: negro */
-    --pf-price: #025840;         /* precio: verde esmeralda */
-    --pf-old: #5a4a50;           /* precio anterior tachado */
+    --pf-cloud-bg: #89cff0;      /* nube: azul bebé */
+    --pf-cloud-text: #1a1a1a;    /* texto de la nube: negro */
+    --pf-card-bg: #89cff0;       /* tarjetas: azul bebé */
+    --pf-title: #1a1a1a;         /* nombre del producto: negro */
+    --pf-text: #fffaf0;          /* descripción: crema */
+    --pf-price: #fffaf0;         /* precio: crema */
+    --pf-old: #fffaf0;           /* precio anterior tachado: crema */
     position: relative;
     z-index: 5;
     margin-top: -24px;           /* cuánto se montan las tarjetas sobre el banner */
