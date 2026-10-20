@@ -4,7 +4,7 @@
   Pega TODO este bloque (estilos + script) en Tiendanube:
   Configuración › Códigos externos (sección de scripts / "código en el footer").
 
-  Productos: los más vendidos de los últimos 15 días (13–28 sep 2026).
+  Productos: los más vendidos de la semana (13–20 oct 2026).
   Para cambiarlos, edita PRODUCT_IDS más abajo.
   El script lee nombre, foto, precio y descuento de los productos que ya
   se muestran en el home, así que precios y promos se actualizan solos.
@@ -174,35 +174,42 @@
   var TITLE = 'Los favoritos de la semana';
 
   // ▼▼ Productos a destacar (IDs de Tiendanube, en el orden en que se muestran) ▼▼
-  // Más vendidos del 13 al 28 de sept. 2026. Todos empataron en 1 unidad,
-  // así que se eligieron los de las compras más recientes.
-  var PRODUCT_IDS = ['348267174', '284226623', '342868992'];
+  // Más vendidos del 13 al 20 de oct. 2026 (unidades en pedidos pagados):
+  //   Calendario de pared 2027: 6 · Funda de tablet Soy mi propio hogar: 2 · Pañito Limpiagafas: 2
+  var PRODUCT_IDS = ['371560450', '371561791', '241837592'];
 
   // Datos de respaldo por si el producto no está en ninguna lista del home.
   // "desc" se usa siempre como texto corto de la tarjeta.
   var FALLBACK = {
-    '348267174': {
-      name: 'Portapinceles Ajolote',
-      url: 'https://www.petalosi.co/productos/portapinceles-tigre-copia-sd8b1/',
-      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/portapinceles-morado-5cdd168ada5a130cf117805043514422-480-0.webp',
-      desc: 'Organiza tus pinceles con estilo: trae una tira resistente para amarrarlo.',
-      price: '$65.000', old: ''
+    '371560450': {
+      name: 'Calendario de pared 2027',
+      url: 'https://www.petalosi.co/productos/calendario-de-pared-2027-1be2e/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/dscf0502-d6d0ebb14711fb6f8d17910545614557-480-0.webp',
+      desc: 'La estrella de Petalosi. Edición limitada, Colección Deriva.',
+      price: '$50.000', old: ''
     },
-    '284226623': {
-      name: 'Sombrero Trampolín',
-      url: 'https://www.petalosi.co/productos/sombrero-trampolin/',
-      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/img_0663-783031a662c4d9af3917537153928826-480-0.webp',
-      desc: 'Doble estampado, ligero y cómodo. Ideal para el sol colombiano.',
-      price: '$60.000', old: '$85.000'
+    '371561791': {
+      name: 'Funda de tablet 11" Soy mi propio hogar',
+      url: 'https://www.petalosi.co/productos/funda-de-tablet-11-soy-mi-propio-hogar-1wfnp/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/img_4119-b3ff9d6f5142a38d1d17910390817469-480-0.webp',
+      desc: 'Inspirada en la idea de que somos nuestro propio hogar. Colección Deriva.',
+      price: '$70.000', old: ''
     },
-    '342868992': {
-      name: 'Bolso impermeable Cigüeña japonesa',
-      url: 'https://www.petalosi.co/productos/bolso-impermeable-flores-electricas-1xp3t/',
-      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/5-9ee68ecdbbb986d32e17782588752066-480-0.webp',
-      desc: 'Resistente y portátil, para la playa, el mercado o la oficina.',
-      price: '$80.000', old: ''
+    '241837592': {
+      name: 'Pañito Limpiagafas',
+      url: 'https://www.petalosi.co/productos/panito-limpiagafas/',
+      image: 'https://acdn-us.mitiendanube.com/stores/005/464/701/products/mesa-de-trabajo-3-09835e76acd85e3cdd17782813880466-480-0.webp',
+      desc: 'Limpia tus gafas con estilo. Ilustrado y en muchos diseños.',
+      price: '$15.000', old: ''
     }
   };
+
+  // Algunos nombres vienen con entidades HTML (p. ej. 11&quot;).
+  function decode(text) {
+    var t = document.createElement('textarea');
+    t.innerHTML = text || '';
+    return t.value;
+  }
 
   function readFromPage(id) {
     var item = document.querySelector('.js-item-product[data-product-id="' + id + '"]');
@@ -211,7 +218,7 @@
     try {
       var ld = item.querySelector('script[type="application/ld+json"]');
       var info = JSON.parse(ld.textContent);
-      data.name = info.name;
+      data.name = decode(info.name);
       data.url = info.offers && info.offers.url;
       data.image = info.image;
       data.desc = info.description;
