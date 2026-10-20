@@ -1,12 +1,12 @@
   .pf-floating {
-    /* Colores de la marca Petalosi */
-    --pf-cloud-bg: #006b2b;      /* nube: verde Petalosi */
-    --pf-cloud-text: #fffaf0;    /* texto de la nube: marfil */
-    --pf-card-bg: #006b2b;       /* tarjetas: el mismo verde */
-    --pf-title: #fffaf0;         /* nombre del producto: marfil */
-    --pf-text: #ffd6ec;          /* descripción: rosa claro */
-    --pf-price: #fffaf0;         /* precio: marfil */
-    --pf-old: #ffd6ec;           /* precio anterior tachado: rosa claro */
+    /* Colores */
+    --pf-cloud-bg: #ffe3f3;      /* nube: rosado */
+    --pf-cloud-text: #bf3a04;    /* texto de la nube: naranja */
+    --pf-card-bg: #ffe3f3;       /* tarjetas: rosado */
+    --pf-title: #bf3a04;         /* nombre del producto: naranja */
+    --pf-text: #1a1a1a;          /* descripción: negro */
+    --pf-price: #047857;         /* precio: verde esmeralda */
+    --pf-old: #7a6a70;           /* precio anterior tachado: gris */
     position: relative;
     z-index: 5;
     margin-top: -24px;           /* cuánto se montan las tarjetas sobre el banner */
@@ -133,20 +133,42 @@
   @media (max-width: 767px) {
     .pf-floating { margin-top: 0; padding: 0; }
     .pf-floating__head { position: static; margin-bottom: 4px; padding: 0 16px; }
-    .pf-cloud { margin-top: 30px; padding: 10px 30px 12px; }
-    .pf-cloud::before { width: 46px; height: 46px; top: -22px; }
-    .pf-cloud::after  { width: 62px; height: 62px; top: -32px; }
-    .pf-cloud__text { font-size: 21px; }
+    .pf-cloud { margin-top: 22px; padding: 7px 20px 8px; }
+    .pf-cloud::before { width: 34px; height: 34px; top: -16px; }
+    .pf-cloud::after  { width: 46px; height: 46px; top: -24px; }
+    .pf-cloud__text { font-size: 17px; }
     .pf-floating__track {
       display: flex;
       gap: 12px;
       padding: 8px 16px 16px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
+      scroll-padding: 0 16px;      /* la primera tarjeta no queda pegada al borde */
       scrollbar-width: none;
     }
     .pf-floating__track::-webkit-scrollbar { display: none; }
-    .pf-card { flex: 0 0 82%; scroll-snap-align: center; }
+    /* Tarjetas angostas, foto arriba: se ven 2 completas y se asoma la 3.ª */
+    .pf-card {
+      flex: 0 0 42%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 8px;
+      padding: 8px 8px 10px;
+      border-radius: 18px;
+      scroll-snap-align: start;
+    }
+    .pf-card__img { flex: none; width: 100%; height: 104px; border-radius: 12px; }
+    .pf-card__body { padding: 0 2px; }
+    .pf-card__name {
+      margin-bottom: 4px;
+      font-size: 15px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .pf-card__price { font-size: 15px; }
+    .pf-card__old { display: block; margin: 0; font-size: 12px; }
   }
   /* En computador se esconden los puntitos del carrusel (quedarían debajo de
      las tarjetas); las flechas siguen funcionando. */
