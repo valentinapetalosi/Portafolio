@@ -11,11 +11,12 @@ Tarjetas de productos que flotan sobre el banner principal de petalosi.co.
 | `productos-flotantes.css` | Diseño de la nube y las tarjetas. |
 | `favoritos.json` | Los 3 productos de la semana. **Es lo único que cambia cada semana.** |
 
-La tienda carga estos archivos desde jsDelivr, a partir de la rama
+La tienda carga estos archivos directamente desde GitHub, de la rama
 `tiendanube-en-vivo` de este repositorio:
-`https://cdn.jsdelivr.net/gh/valentinapetalosi/Portafolio@tiendanube-en-vivo/tiendanube/productos-flotantes/`
+`https://raw.githubusercontent.com/valentinapetalosi/Portafolio/tiendanube-en-vivo/tiendanube/productos-flotantes/`
 
-Lo que se sube a esa rama aparece en la tienda (tras limpiar la caché de jsDelivr, ver abajo).
+Lo que se sube a esa rama aparece en la tienda en unos 5 minutos (la caché de GitHub).
+No se usa jsDelivr: con URLs de rama entregaba versiones viejas y distintas según el servidor.
 
 ## Actualización semanal (la hace la tarea programada de Claude cada lunes)
 
@@ -38,13 +39,6 @@ Lo que se sube a esa rama aparece en la tienda (tras limpiar la caché de jsDeli
    La `desc` de la tarjeta se escribe a mano: una frase corta (máx. ~75 caracteres), en el tono de Petalosi.
 6. **Editar `favoritos.json`:** `periodo`, `actualizado`, y los 3 `productos` (con `vendidos`).
 7. **Publicar:** commit en la rama `tiendanube-en-vivo` y `git push origin tiendanube-en-vivo`.
-8. **Limpiar la caché de jsDelivr** (si no, el cambio puede tardar hasta 12 h):
-
-   ```sh
-   for f in favoritos.json productos-flotantes.js productos-flotantes.css; do
-     curl -sS "https://purge.jsdelivr.net/gh/valentinapetalosi/Portafolio@tiendanube-en-vivo/tiendanube/productos-flotantes/$f"
-   done
-   ```
-
-9. **Comprobar:** `curl -sS https://cdn.jsdelivr.net/gh/valentinapetalosi/Portafolio@tiendanube-en-vivo/tiendanube/productos-flotantes/favoritos.json`
+8. **Comprobar** (unos 5 minutos después del push):
+   `curl -sS https://raw.githubusercontent.com/valentinapetalosi/Portafolio/tiendanube-en-vivo/tiendanube/productos-flotantes/favoritos.json`
    debe mostrar los productos nuevos.

@@ -1,15 +1,23 @@
 /*
   Petalosi · "Los favoritos de la semana" flotando sobre el banner principal
   -----------------------------------------------------------------------
-  Lo carga la etiqueta de Google Tag Manager (ver gtm-etiqueta.html) desde
-  jsDelivr. Los productos salen de favoritos.json, que se actualiza cada
+  Lo carga la etiqueta de Google Tag Manager (ver gtm-etiqueta.html)
+  directamente desde GitHub (rama tiendanube-en-vivo). Los productos salen de favoritos.json, que se actualiza cada
   semana con los más vendidos; este archivo casi nunca cambia.
 
   Si un producto también aparece en alguna lista del home, se usan el
   precio y la foto de la página (siempre al día). Si no, los de favoritos.json.
 */
 (function () {
-  var BASE = 'https://cdn.jsdelivr.net/gh/valentinapetalosi/Portafolio@tiendanube-en-vivo/tiendanube/productos-flotantes/';
+  // GitHub sirve la última versión de la rama con solo 5 minutos de caché.
+  var BASE = 'https://raw.githubusercontent.com/valentinapetalosi/Portafolio/tiendanube-en-vivo/tiendanube/productos-flotantes/';
+
+  function get(file) {
+    return fetch(BASE + file, { cache: 'no-cache' }).then(function (r) {
+      if (!r.ok) throw new Error(file + ' ' + r.status);
+      return r.text();
+    });
+  }
 
   // Algunos nombres vienen con entidades HTML (p. ej. 11&quot;).
   function decode(text) {
@@ -124,15 +132,18 @@
     var config = null, cssReady = false;
     function maybeRender() { if (config && cssReady) render(config); }
 
-    var css = document.createElement('link');
-    css.rel = 'stylesheet';
-    css.href = BASE + 'productos-flotantes.css';
-    css.onload = css.onerror = function () { cssReady = true; maybeRender(); };
-    document.head.appendChild(css);
+    // GitHub entrega el CSS como texto plano, así que se inserta como <style>.
+    get('productos-flotantes.css')
+      .then(function (text) {
+        var style = document.createElement('style');
+        style.textContent = text;
+        document.head.appendChild(style);
+      })
+      .catch(function () {})
+      .then(function () { cssReady = true; maybeRender(); });
 
-    fetch(BASE + 'favoritos.json')
-      .then(function (r) { return r.json(); })
-      .then(function (data) { config = data; maybeRender(); })
+    get('favoritos.json')
+      .then(function (text) { config = JSON.parse(text); maybeRender(); })
       .catch(function () {});
   }
 
