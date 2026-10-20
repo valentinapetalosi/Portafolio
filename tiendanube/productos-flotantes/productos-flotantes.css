@@ -139,39 +139,33 @@
     .pf-cloud::before { width: 34px; height: 34px; top: -16px; }
     .pf-cloud::after  { width: 46px; height: 46px; top: -24px; }
     .pf-cloud__text { font-size: 17px; }
+    /* Las 3 tarjetas completas en una fila, sin deslizar ni cortes */
     .pf-floating__track {
-      display: flex;
-      gap: 12px;
-      padding: 8px 16px 10px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      scroll-padding: 0 16px;      /* la primera tarjeta no queda pegada al borde */
-      scrollbar-width: none;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      padding: 8px 12px 10px;
     }
-    .pf-floating__track::-webkit-scrollbar { display: none; }
-    /* Tarjetas angostas, foto arriba: se ven 2 completas y se asoma la 3.ª */
     .pf-card {
-      flex: 0 0 42%;
       flex-direction: column;
       align-items: stretch;
-      gap: 8px;
-      padding: 8px 8px 10px;
-      border-radius: 18px;
-      scroll-snap-align: start;
+      gap: 6px;
+      padding: 6px 6px 8px;
+      border-radius: 14px;
     }
-    .pf-card__img { flex: none; width: 100%; height: 104px; border-radius: 12px; }
+    .pf-card__img { flex: none; width: 100%; height: auto; aspect-ratio: 1 / 1; border-radius: 10px; }
     .pf-card__body { padding: 0 2px; }
     .pf-card__name {
-      margin-bottom: 4px;
-      font-size: 13.5px;           /* más pequeño para que quepan los nombres largos */
+      margin-bottom: 3px;
+      font-size: 12.5px;           /* pequeño para que quepan los nombres largos */
       line-height: 1.25;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .pf-card__price { font-size: 15px; }
-    .pf-card__old { display: block; margin: 0; font-size: 12px; }
+    .pf-card__price { font-size: 13px; }
+    .pf-card__old { display: block; margin: 0; font-size: 11px; }
   }
   /* En computador se esconden los puntitos del carrusel (quedarían debajo de
      las tarjetas); las flechas siguen funcionando. */
