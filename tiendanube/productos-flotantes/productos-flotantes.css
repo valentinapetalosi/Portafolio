@@ -1,16 +1,16 @@
   .pf-floating {
     /* Colores */
-    --pf-cloud-bg: #ffe3f3;      /* nube: rosado */
-    --pf-cloud-text: #bf3a04;    /* texto de la nube: naranja */
-    --pf-card-bg: #ffe3f3;       /* tarjetas: rosado */
-    --pf-title: #bf3a04;         /* nombre del producto: naranja */
+    --pf-cloud-bg: #ffa2d5;      /* nube: rosado chicle */
+    --pf-cloud-text: #8f2a00;    /* texto de la nube: naranja quemado */
+    --pf-card-bg: #ffa2d5;       /* tarjetas: rosado chicle */
+    --pf-title: #8f2a00;         /* nombre del producto: naranja quemado */
     --pf-text: #1a1a1a;          /* descripción: negro */
-    --pf-price: #047857;         /* precio: verde esmeralda */
-    --pf-old: #7a6a70;           /* precio anterior tachado: gris */
+    --pf-price: #025840;         /* precio: verde esmeralda */
+    --pf-old: #5a4a50;           /* precio anterior tachado */
     position: relative;
     z-index: 5;
     margin-top: -24px;           /* cuánto se montan las tarjetas sobre el banner */
-    margin-bottom: 32px;
+    margin-bottom: 16px;
     padding: 0 24px;
     pointer-events: none;        /* deja clicar el banner entre tarjetas */
   }
@@ -131,7 +131,7 @@
   }
   /* Celular: carrusel horizontal deslizable */
   @media (max-width: 767px) {
-    .pf-floating { margin-top: 0; padding: 0; }
+    .pf-floating { margin-top: 0; margin-bottom: 0; padding: 0; }
     .pf-floating__head { position: static; margin-bottom: 4px; padding: 0 16px; }
     .pf-cloud { margin-top: 22px; padding: 7px 20px 8px; }
     .pf-cloud::before { width: 34px; height: 34px; top: -16px; }
@@ -140,7 +140,7 @@
     .pf-floating__track {
       display: flex;
       gap: 12px;
-      padding: 8px 16px 16px;
+      padding: 8px 16px 10px;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-padding: 0 16px;      /* la primera tarjeta no queda pegada al borde */
@@ -161,9 +161,10 @@
     .pf-card__body { padding: 0 2px; }
     .pf-card__name {
       margin-bottom: 4px;
-      font-size: 15px;
+      font-size: 13.5px;           /* más pequeño para que quepan los nombres largos */
+      line-height: 1.25;
       display: -webkit-box;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
