@@ -1,0 +1,37 @@
+{
+  "titulo": "Los favoritos de la semana",
+  "periodo": "2026-10-13 a 2026-10-19",
+  "actualizado": "2026-10-20",
+  "productos": [
+    {
+      "id": "371560450",
+      "name": "Calendario de pared 2027",
+      "url": "https://www.petalosi.co/productos/calendario-de-pared-2027-1be2e/",
+      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/dscf0502-d6d0ebb14711fb6f8d17910545614557-480-0.webp",
+      "desc": "La estrella de Petalosi. Edición limitada, Colección Deriva.",
+      "price": "$50.000",
+      "old": "",
+      "vendidos": 6
+    },
+    {
+      "id": "371561791",
+      "name": "Funda de tablet 11\" Soy mi propio hogar",
+      "url": "https://www.petalosi.co/productos/funda-de-tablet-11-soy-mi-propio-hogar-1wfnp/",
+      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/img_4119-b3ff9d6f5142a38d1d17910390817469-480-0.webp",
+      "desc": "Inspirada en la idea de que somos nuestro propio hogar. Colección Deriva.",
+      "price": "$70.000",
+      "old": "",
+      "vendidos": 2
+    },
+    {
+      "id": "241837592",
+      "name": "Pañito Limpiagafas",
+      "url": "https://www.petalosi.co/productos/panito-limpiagafas/",
+      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/mesa-de-trabajo-3-09835e76acd85e3cdd17782813880466-480-0.webp",
+      "desc": "Limpia tus gafas con estilo. Ilustrado y en muchos diseños.",
+      "price": "$15.000",
+      "old": "",
+      "vendidos": 2
+    }
+  ]
+}
