@@ -29,7 +29,10 @@ def product_data(url):
     key = re.sub(r"-\d+-\d+\.\w+$", "", image.rsplit("/", 1)[-1])
     variants = None
     for m in re.finditer(r'data-variants="([^"]*)"', page):
-        v = json.loads(html.unescape(m.group(1)))
+        try:
+            v = json.loads(html.unescape(m.group(1)))
+        except ValueError:
+            continue  # algunos data-variants vienen vacíos
         if v and any(key in (x.get("image_url") or "") for x in v):
             variants = v
             break

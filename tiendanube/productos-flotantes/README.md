@@ -29,6 +29,8 @@ No se usa jsDelivr: con URLs de rama entregaba versiones viejas y distintas seg�
    - productos genéricos o manuales como **"Varios"**;
    - **Tarjeta de Regalo**;
    - pedidos que parezcan de prueba (p. ej. "Pepita Perez").
+   - pedidos al por mayor: los creados a mano (`storefront` = `form`) con más de 20 unidades
+     (p. ej. pedidos de consignación a otras tiendas); distorsionan qué compran los clientes.
 3. **Orden:** más unidades primero. Si hay empate, gana el que esté en más pedidos distintos;
    si sigue el empate, el de la venta más reciente.
 4. **Solo productos publicados y con stock:** revisar la página del producto en petalosi.co.

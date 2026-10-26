@@ -4,7 +4,7 @@ Repositorio: valentinapetalosi/Portafolio. Trabaja SOLO en la rama `tiendanube-e
 
 Sigue al pie de la letra el procedimiento de `tiendanube/productos-flotantes/README.md` (sección "Actualización semanal"):
 1. Pedidos pagados de la semana con el conector de Tiendanube (`list_orders`, rango del lunes 00:00 al domingo 23:59:59 con -05:00, status open+closed, payment_status paid/authorized/partially_paid, limit 100, paginar si hace falta). Si el conector de Tiendanube no está disponible, no cambies nada y dilo claramente en el resumen.
-2. Suma unidades por producto. Excluye "Varios", "Tarjeta de Regalo" y pedidos que parezcan de prueba.
+2. Suma unidades por producto. Excluye "Varios", "Tarjeta de Regalo", pedidos que parezcan de prueba y pedidos al por mayor (creados a mano, storefront "form", con más de 20 unidades).
 3. Ordena: más unidades; empate → más pedidos distintos; luego la venta más reciente.
 4. Solo productos publicados y con stock (usa `python3 -I tiendanube/productos-flotantes/datos-producto.py <url>`; la URL sale de `product_url` en `list_products`/`search_products` del conector). Si hay menos de 3 válidos, completa con los de la semana anterior que sigan con stock.
 5. Escribe para cada uno una `desc` corta (máx. ~75 caracteres, español, tono cálido de Petalosi, sin inventar datos).
