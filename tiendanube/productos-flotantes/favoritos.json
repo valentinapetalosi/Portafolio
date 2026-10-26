@@ -11,7 +11,7 @@
       "desc": "La estrella de Petalosi. Edición limitada, Colección Deriva.",
       "price": "$50.000",
       "old": "",
-      "vendidos": 10
+      "vendidos": 27
     },
     {
       "id": "371560569",
@@ -21,17 +21,17 @@
       "desc": "Las mejores ilustraciones del año, para tu mesa de trabajo.",
       "price": "$35.000",
       "old": "",
-      "vendidos": 5
+      "vendidos": 20
     },
     {
-      "id": "371559851",
-      "name": "Cartera Dos mundos",
-      "url": "https://www.petalosi.co/productos/cartera-dos-mundos-3cca9/",
-      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/dscf0440-126671b9f9d9e2414417910470305168-480-0.webp",
-      "desc": "¡Volvieron las best-sellers de Petalosi! Colección Deriva.",
-      "price": "$130.000",
+      "id": "241837592",
+      "name": "Pañito Limpiagafas",
+      "url": "https://www.petalosi.co/productos/panito-limpiagafas/",
+      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/mesa-de-trabajo-3-09835e76acd85e3cdd17782813880466-480-0.webp",
+      "desc": "Limpia tus gafas con estilo. Ilustrado y en muchos diseños.",
+      "price": "$15.000",
       "old": "",
-      "vendidos": 3
+      "vendidos": 12
     }
   ]
 }
