@@ -139,20 +139,19 @@ function pStyle(name, font, size, leading, color) {
   st.paragraphAttributes.hyphenation = false;
   return st;
 }
+// Three sizes do all the work: 96 display, 56 heading, 20 text.
 var S = {
-  strip: pStyle("Strip", TEXT_BOLD, 19, 23),
-  cover: pStyle("Cover title", TITLE_FONT, 110, 110),
-  title: pStyle("Project title", TITLE_FONT, 72, 74),
-  h2: pStyle("Heading", TITLE_FONT, 64, 66),
+  strip: pStyle("Strip", TEXT_BOLD, 20, 24),
+  display: pStyle("Display", TITLE_FONT, 96, 100),
+  h2: pStyle("Heading", TITLE_FONT, 56, 60),
   body: pStyle("Body", TEXT_FONT, 20, 30),
-  lead: pStyle("Lead", TEXT_FONT, 26, 38),
-  meta: pStyle("Meta", TEXT_FONT, 18, 26),
-  metaLabel: pStyle("Meta label", TEXT_BOLD, 18, 26),
+  meta: pStyle("Meta", TEXT_FONT, 20, 28),
+  metaLabel: pStyle("Meta label", TEXT_BOLD, 20, 28),
   caption: pStyle("Caption", TEXT_FONT, 20, 30),
-  figure: pStyle("Figure", TITLE_FONT, 48, 52),
-  figureLabel: pStyle("Figure label", TEXT_FONT, 18, 24),
-  list: pStyle("Index", TEXT_FONT, 24, 40),
-  listSoft: pStyle("Index soft", TEXT_FONT, 24, 40, SOFT),
+  figure: pStyle("Figure", TITLE_FONT, 56, 60),
+  figureLabel: pStyle("Figure label", TEXT_FONT, 20, 28),
+  list: pStyle("Index", TEXT_FONT, 20, 38),
+  listSoft: pStyle("Index soft", TEXT_FONT, 20, 38, SOFT),
   note: pStyle("Placeholder note", TEXT_FONT, 20, 26, SOFT)
 };
 
@@ -225,16 +224,16 @@ function newPage(name) {
 var layouts = {
   intro: function (s) {
     var colW = (INNER - GAP) / 3;
-    photo(TOP, M, 470, M + colW, s.images[0]);
-    text(502, M, 590, M + colW, [[s.title, S.title]]);
+    photo(TOP, M, 440, M + colW, s.images[0]);
+    text(470, M, 580, M + colW, [[s.title, S.display]]);
     var labels = [], values = [];
     for (var i = 0; i < s.meta.length; i++) {
       labels.push([s.meta[i][0], S.metaLabel]);
       values.push([s.meta[i][1], S.meta]);
     }
-    var metaBottom = 610 + s.meta.length * 26 + 8;
-    text(610, M, metaBottom, M + 100, labels);
-    text(610, M + 110, metaBottom, M + colW, values);
+    var metaBottom = 600 + s.meta.length * 28 + 8;
+    text(600, M, metaBottom, M + 120, labels);
+    text(600, M + 130, metaBottom, M + colW, values);
     text(metaBottom + 22, M, BOTTOM, M + colW, [[s.text, S.body]]);
     photo(TOP, M + colW + GAP, BOTTOM, W - M, s.images[1]);
   },
@@ -251,48 +250,50 @@ var layouts = {
     var bigW = (INNER - GAP) * 2 / 3;
     var x = M + bigW + GAP, colW = INNER - bigW - GAP, half = (colW - 24) / 2;
     photo(TOP, M, BOTTOM, M + bigW, s.image);
-    text(TOP, x, TOP + 80, W - M, [[s.heading, S.h2]]);
+    text(TOP, x, TOP + 70, W - M, [[s.heading, S.h2]]);
     for (var i = 0; i < s.figures.length; i++) {
-      var fx = x + (i % 2) * (half + 24), fy = 196 + Math.floor(i / 2) * 124;
-      text(fy, fx, fy + 112, fx + half, [[s.figures[i][0], S.figure], [s.figures[i][1], S.figureLabel]]);
+      var fx = x + (i % 2) * (half + 24), fy = 190 + Math.floor(i / 2) * 140;
+      text(fy, fx, fy + 124, fx + half, [[s.figures[i][0], S.figure], [s.figures[i][1], S.figureLabel]]);
     }
     var paras = [[s.text, S.body]];
     if (s.link) paras.push([s.link, S.figureLabel]);
-    var tf = text(452, x, 712, W - M, paras);
+    var tf = text(476, x, 736, W - M, paras);
     if (s.link) tf.paragraphs[1].paragraphAttributes.spaceBefore = 16;
-    photo(736, x, BOTTOM, W - M, s.side);
+    photo(760, x, BOTTOM, W - M, s.side);
   }
 };
 
 // ---------------------------------------------------------------- pages
 newPage("Cover");
 strip("Portfolio", "Valentina Petalosi", "Parsons School of Design · 2027 intake");
+var coverL = (INNER - GAP) / 2.25;
 var logo = File(HERE.fsName + "/logo-valentina.png");
 if (logo.exists) {
   var lg = content.placedItems.add();
   lg.file = logo;
-  var ratio = 620 / lg.width;
+  var ratio = 520 / lg.width;
   lg.width *= ratio; lg.height *= ratio;
-  lg.position = [X(M), Y(724) + lg.height];
+  lg.position = [X(M), Y(TOP)];
   lg.name = "Logo";
 }
-text(770, M, 900, M + 900, [["Selected work", S.cover]]);
-text(916, M, BOTTOM, M + 760, [["Application to the MS in Strategic Design and Management, Parsons School of Design.", S.lead]]);
+text(596, M, 704, M + coverL, [["Selected work", S.display]]);
+text(724, M, 800, M + 640, [["Application to the MS in Strategic Design and Management, Parsons School of Design.", S.body]]);
 var names = [], types = [];
 for (var p = 0; p < PROJECTS.length; p++) {
   names.push([PROJECTS[p].name, S.list]);
   types.push([PROJECTS[p].type.split(" · ")[0], S.listSoft]);
 }
-var listTop = BOTTOM - PROJECTS.length * 40 - 8;
-text(listTop, W - M - 560, BOTTOM, W - M - 240, names);
-text(listTop, W - M - 300, BOTTOM, W - M, types, "right");
+var listTop = BOTTOM - PROJECTS.length * 38 - 8;
+text(listTop, M, BOTTOM, M + 400, names);
+text(listTop, M + 340, BOTTOM, M + 640, types, "right");
+photo(TOP, M + coverL + GAP, BOTTOM, W - M, { src: "", label: "Cover photo: Rayuela, drone view of the finished court" });
 
 newPage("About");
 strip("About", "Valentina Petalosi", "Bogotá, Colombia");
 var halfW = (INNER - GAP) / 2;
 photo(TOP, M, BOTTOM, M + halfW, { src: "", label: "Portrait or working photo" });
 text(700, M + halfW + GAP, 780, W - M, [["About me", S.h2]]);
-text(800, M + halfW + GAP, BOTTOM, W - M, [["[Short introduction: background, what you do today, and why strategic design and management is the next step. Four to five sentences.]", S.lead]]);
+text(800, M + halfW + GAP, BOTTOM, W - M, [["[Short introduction: background, what you do today, and why strategic design and management is the next step. Four to five sentences.]", S.body]]);
 
 for (var pi = 0; pi < PROJECTS.length; pi++) {
   var pr = PROJECTS[pi];
