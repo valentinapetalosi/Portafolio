@@ -1,0 +1,17 @@
+Tarea semanal: actualizar "Los favoritos de la semana" de la tienda Tiendanube Petalosi (petalosi.co) con los 3 productos más vendidos de la semana anterior (lunes a domingo, hora de Colombia, UTC-5).
+
+Repositorio: valentinapetalosi/Portafolio. Trabaja SOLO en la rama `tiendanube-en-vivo`; la dueña del repositorio autorizó subir cambios directamente a esa rama para esta tarea. No toques ninguna otra rama ni abras pull requests. Primero: `git fetch origin tiendanube-en-vivo && git checkout tiendanube-en-vivo && git pull origin tiendanube-en-vivo`.
+
+Sigue al pie de la letra el procedimiento de `tiendanube/productos-flotantes/README.md` (sección "Actualización semanal"):
+1. Pedidos pagados de la semana con el conector de Tiendanube (`list_orders`, rango del lunes 00:00 al domingo 23:59:59 con -05:00, status open+closed, payment_status paid/authorized/partially_paid, limit 100, paginar si hace falta). Si el conector de Tiendanube no está disponible, no cambies nada y dilo claramente en el resumen.
+2. Suma unidades por producto. Excluye "Varios", "Tarjeta de Regalo" y pedidos que parezcan de prueba.
+3. Ordena: más unidades; empate → más pedidos distintos; luego la venta más reciente.
+4. Solo productos publicados y con stock (usa `python3 -I tiendanube/productos-flotantes/datos-producto.py <url>`; la URL sale de `product_url` en `list_products`/`search_products` del conector). Si hay menos de 3 válidos, completa con los de la semana anterior que sigan con stock.
+5. Escribe para cada uno una `desc` corta (máx. ~75 caracteres, español, tono cálido de Petalosi, sin inventar datos).
+6. Actualiza SOLO `tiendanube/productos-flotantes/favoritos.json` (titulo sin cambios, periodo, actualizado = fecha de hoy, productos con vendidos). Valida que sea JSON válido. No cambies el CSS, el JS ni la etiqueta.
+7. Commit (mensaje en inglés, describiendo el periodo y los productos) y `git push origin tiendanube-en-vivo` (reintenta hasta 4 veces si falla la red).
+8. Unos 5 minutos después del push, comprueba con curl que https://raw.githubusercontent.com/valentinapetalosi/Portafolio/tiendanube-en-vivo/tiendanube/productos-flotantes/favoritos.json ya devuelve los productos nuevos.
+
+Si no hubo ventas válidas en la semana, NO cambies nada y dilo en el resumen.
+
+Termina con un resumen corto en español: periodo, los 3 productos elegidos con unidades vendidas y precio, qué se excluyó y por qué, y si la tienda ya muestra el cambio. No incluyas datos personales de clientes (nombres, correos, teléfonos) en el resumen ni en el commit.
