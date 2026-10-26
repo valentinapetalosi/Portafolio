@@ -28,10 +28,11 @@ No se usa jsDelivr: con URLs de rama entregaba versiones viejas y distintas seg�
    No contar:
    - productos genéricos o manuales como **"Varios"**;
    - **Tarjeta de Regalo**;
+   - **Pañito Limpiagafas** (la dueña pidió no destacarlo nunca);
    - pedidos que parezcan de prueba (p. ej. "Pepita Perez").
    Los pedidos al por mayor (aunque sean grandes y hechos a mano) **sí se cuentan**.
 3. **Orden:** más unidades primero. Si hay empate, gana el que esté en más pedidos distintos;
-   si sigue el empate, el de la venta más reciente.
+   si sigue el empate, el de la venta más reciente; y si aún empatan, el que dejó más ingresos (precio × unidades).
 4. **Solo productos publicados y con stock:** revisar la página del producto en petalosi.co.
    Si uno no tiene stock, se salta y se toma el siguiente.
    Si se vendieron menos de 3 productos válidos, completar con los de la semana anterior que sigan con stock.
