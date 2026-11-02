@@ -1,7 +1,7 @@
 {
   "titulo": "Los favoritos de la semana",
-  "periodo": "2026-10-19 a 2026-10-25",
-  "actualizado": "2026-10-26",
+  "periodo": "2026-10-26 a 2026-11-01",
+  "actualizado": "2026-11-02",
   "productos": [
     {
       "id": "371560450",
@@ -11,7 +11,17 @@
       "desc": "La estrella de Petalosi. Edición limitada, Colección Deriva.",
       "price": "$50.000",
       "old": "",
-      "vendidos": 27
+      "vendidos": 4
+    },
+    {
+      "id": "371560154",
+      "name": "Bolso Raíces",
+      "url": "https://www.petalosi.co/productos/bolso-raices-w26w1/",
+      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/dscf9936-c560fed76a1adb4d0317910457937150-480-0.webp",
+      "desc": "Inspirado en el linaje femenino y en cómo nos cuidamos entre generaciones.",
+      "price": "$150.000",
+      "old": "",
+      "vendidos": 3
     },
     {
       "id": "371560569",
@@ -21,17 +31,7 @@
       "desc": "Las mejores ilustraciones del año, para tu mesa de trabajo.",
       "price": "$35.000",
       "old": "",
-      "vendidos": 20
-    },
-    {
-      "id": "371562812",
-      "name": "Chaqueta impermeable Nido",
-      "url": "https://www.petalosi.co/productos/chaqueta-impermeable-nido-1qs2q/",
-      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/_mg_0613-20abe04b03fa98735317909913029439-480-0.webp",
-      "desc": "Inspirada en migrar: cambiar de lugar y también de forma.",
-      "price": "$170.000",
-      "old": "",
-      "vendidos": 7
+      "vendidos": 3
     }
   ]
 }
