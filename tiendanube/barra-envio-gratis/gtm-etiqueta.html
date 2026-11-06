@@ -17,7 +17,7 @@
   if (/checkout/i.test(location.hostname + location.pathname)) return;
   if (!document.querySelector('.js-cart-subtotal') && !(window.LS && LS.cart)) return;
 
-  var META = 300000; // envío gratis desde $300.000
+  var META = 250000; // envío gratis desde $250.000
 
   function subtotal() {
     // 1) El span del subtotal guarda el valor en centavos en data-priceraw y se actualiza con cada cambio.
