@@ -9,18 +9,15 @@
     --pf-old: #4a2a3c;           /* precio anterior tachado */
     position: relative;
     z-index: 5;
-    margin-top: -16px;           /* cuánto se montan las tarjetas sobre el banner */
+    margin-top: 8px;             /* debajo del banner: no tapa su botón "Ver más" */
     margin-bottom: 16px;
     padding: 0 24px;
     pointer-events: none;        /* deja clicar el banner entre tarjetas */
   }
   /* Título "Los favoritos de la semana" en una nubecita */
   .pf-floating__head {
-    position: absolute;          /* la nube va encima del banner, sin empujar las tarjetas */
-    bottom: 100%;
-    left: max(24px, calc((100% - 1000px) / 2));  /* alineada con la primera tarjeta */
     margin-bottom: 8px;
-    text-align: left;            /* a la izquierda: no tapa el botón del banner */
+    text-align: center;          /* centrada sobre las tarjetas */
   }
   .pf-cloud {
     position: relative;
@@ -134,7 +131,7 @@
   /* Celular: carrusel horizontal deslizable */
   @media (max-width: 767px) {
     .pf-floating { margin-top: 0; margin-bottom: 0; padding: 0; }
-    .pf-floating__head { position: static; margin-bottom: 4px; padding: 0 16px; }
+    .pf-floating__head { position: static; margin-bottom: 4px; padding: 0 16px; text-align: center; }
     .pf-cloud { margin-top: 12px; padding: 3px 12px 4px; }
     .pf-cloud::before { width: 16px; height: 16px; top: -7px; }
     .pf-cloud::after  { width: 22px; height: 22px; top: -10px; }
