@@ -3,13 +3,19 @@
      - Lee el subtotal real del carrito (data-priceraw / LS.cart), que sí se actualiza al agregar productos.
      - Con el carrito abierto, la barra flotante se oculta y aparece dentro del carrito, justo encima de
        "Iniciar compra", así nunca tapa el botón.
-     - La barra flotante no captura toques (pointer-events:none). -->
+     - La barra flotante no captura toques (pointer-events:none).
+     - No aparece en el checkout. -->
 <script>
 (function (run) {
   document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', run) : run();
 })(function () {
   if (window.__petalosiFreeship) return;
   window.__petalosiFreeship = true;
+
+  // En el checkout no se muestra: ahí ya no ayuda a vender y el total viene en otro formato
+  // ("COP75,000.00"), que la barra leería mal. Tampoco en páginas sin el carrito de la tienda.
+  if (/checkout/i.test(location.hostname + location.pathname)) return;
+  if (!document.querySelector('.js-cart-subtotal') && !(window.LS && LS.cart)) return;
 
   var META = 300000; // envío gratis desde $300.000
 
