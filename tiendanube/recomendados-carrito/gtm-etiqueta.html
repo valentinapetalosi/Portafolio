@@ -66,15 +66,16 @@
   // ---------- 2. Dibujar las tarjetas ----------
   var css = document.createElement('style');
   css.textContent =
-    '#petalosi-reco{margin:4px 0 16px;}' +
+    // --pr-w = ancho de la foto de los productos del carrito (se mide en vivo; 78px en celular).
+    '#petalosi-reco{--pr-w:78px;margin:4px 0 16px;}' +
     '#petalosi-reco h4{margin:0 0 8px;font-size:14px;font-weight:600;}' +
-    '#petalosi-reco .pr-fila{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}' +
-    '#petalosi-reco .pr-card{flex:0 0 118px;scroll-snap-align:start;display:flex;flex-direction:column;gap:4px;padding:6px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#fff;box-sizing:border-box;}' +
-    '#petalosi-reco .pr-img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:6px;background:#f3eee6;}' +
-    '#petalosi-reco .pr-nombre{font-size:12px;line-height:1.25;color:inherit;text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:30px;}' +
-    '#petalosi-reco .pr-precio{font-size:12.5px;font-weight:700;}' +
-    '#petalosi-reco select{width:100%;font-family:inherit;font-size:11.5px;padding:3px 4px;border:1px solid rgba(0,0,0,.2);border-radius:6px;background:#fff;}' +
-    '#petalosi-reco button{margin-top:auto;width:100%;padding:6px 4px;font-family:inherit;font-size:12px;font-weight:600;border:0;border-radius:6px;background:#16140F;color:#F5E9D3;cursor:pointer;}' +
+    '#petalosi-reco .pr-fila{display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;}' +
+    '#petalosi-reco .pr-card{flex:0 0 var(--pr-w);width:var(--pr-w);scroll-snap-align:start;display:flex;flex-direction:column;gap:3px;}' +
+    '#petalosi-reco .pr-img{display:block;width:var(--pr-w);height:var(--pr-w);object-fit:cover;border-radius:4px;background:#f3eee6;}' +
+    '#petalosi-reco .pr-nombre{font-size:11px;line-height:1.25;color:inherit;text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:27px;}' +
+    '#petalosi-reco .pr-precio{font-size:11.5px;font-weight:700;}' +
+    '#petalosi-reco select{width:100%;font-family:inherit;font-size:10.5px;padding:2px;border:1px solid rgba(0,0,0,.2);border-radius:4px;background:transparent;color:inherit;}' +
+    '#petalosi-reco button{margin-top:auto;width:100%;padding:5px 2px;font-family:inherit;font-size:11.5px;font-weight:600;border:0;border-radius:4px;background:#007E33;color:#FFFAF0;cursor:pointer;}' +
     '#petalosi-reco button[disabled]{opacity:.6;cursor:default;}';
   document.head.appendChild(css);
 
@@ -95,6 +96,8 @@
     if (!productos) return;
     var ya = enCarrito();
     var lista = productos.filter(function (p) { return !ya[p.id]; }).slice(0, MAXIMO);
+    var vacio = !((window.LS && LS.cart && LS.cart.items) || []).length;
+    if (vacio) lista = [];   // con el carrito vacío no se recomienda nada
     var firma = lista.map(function (p) { return p.id; }).join(',');
     if (firma === firmaActual) return;
     firmaActual = firma;
@@ -171,6 +174,9 @@
     var lista = document.querySelector('#modal-cart .js-ajax-cart-list');
     if (!lista || !lista.parentNode) return;
     if (lista.nextSibling !== caja) lista.parentNode.insertBefore(caja, lista.nextSibling);
+    var foto = lista.querySelector('.cart-item-image, img');
+    var w = foto ? Math.round(foto.getBoundingClientRect().width) : 0;
+    if (w >= 50 && w <= 160) caja.style.setProperty('--pr-w', w + 'px');
     pintar();
   }
   var cargado = false;
