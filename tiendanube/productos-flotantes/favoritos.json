@@ -1,7 +1,7 @@
 {
   "titulo": "Los favoritos de la semana",
-  "periodo": "2026-10-26 a 2026-11-01",
-  "actualizado": "2026-11-02",
+  "periodo": "2026-11-02 a 2026-11-08",
+  "actualizado": "2026-11-09",
   "productos": [
     {
       "id": "371560450",
@@ -11,17 +11,7 @@
       "desc": "La estrella de Petalosi. Edición limitada, Colección Deriva.",
       "price": "$50.000",
       "old": "",
-      "vendidos": 4
-    },
-    {
-      "id": "371560154",
-      "name": "Bolso Raíces",
-      "url": "https://www.petalosi.co/productos/bolso-raices-w26w1/",
-      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/dscf9936-c560fed76a1adb4d0317910457937150-480-0.webp",
-      "desc": "Inspirado en el linaje femenino y en cómo nos cuidamos entre generaciones.",
-      "price": "$150.000",
-      "old": "",
-      "vendidos": 3
+      "vendidos": 21
     },
     {
       "id": "371560569",
@@ -31,7 +21,17 @@
       "desc": "Las mejores ilustraciones del año, para tu mesa de trabajo.",
       "price": "$35.000",
       "old": "",
-      "vendidos": 3
+      "vendidos": 9
+    },
+    {
+      "id": "371560886",
+      "name": "Agenda Raíces",
+      "url": "https://www.petalosi.co/productos/agenda-raices-1h228/",
+      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/dsc_0226-95deb6efbac6fda97917909858898748-480-0.webp",
+      "desc": "Inspirada en el linaje femenino y en cómo nos cuidamos entre generaciones.",
+      "price": "$75.000",
+      "old": "",
+      "vendidos": 7
     }
   ]
 }
