@@ -1,8 +1,18 @@
 {
   "titulo": "Los favoritos de la semana",
-  "periodo": "2026-11-09 a 2026-11-15",
-  "actualizado": "2026-11-16",
+  "periodo": "2026-11-16 a 2026-11-22",
+  "actualizado": "2026-11-23",
   "productos": [
+    {
+      "id": "371560569",
+      "name": "Calendario de escritorio 2027",
+      "url": "https://www.petalosi.co/productos/calendario-de-escritorio-2027-rlqzc/",
+      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/dscf0318-c378125dfd8494e87717910530385901-480-0.webp",
+      "desc": "Las mejores ilustraciones del año, para tu mesa de trabajo.",
+      "price": "$35.000",
+      "old": "",
+      "vendidos": 20
+    },
     {
       "id": "371560450",
       "name": "Calendario de pared 2027",
@@ -11,17 +21,7 @@
       "desc": "La estrella de Petalosi. Edición limitada, Colección Deriva.",
       "price": "$50.000",
       "old": "",
-      "vendidos": 18
-    },
-    {
-      "id": "371560669",
-      "name": "Agenda Soy mi propio hogar",
-      "url": "https://www.petalosi.co/productos/agenda-soy-mi-propio-hogar-1l497/",
-      "image": "https://acdn-us.mitiendanube.com/stores/005/464/701/products/dsc_0203-1a387828ede381067417909861151013-480-0.webp",
-      "desc": "Inspirada en la idea de que somos nuestro propio hogar.",
-      "price": "$75.000",
-      "old": "",
-      "vendidos": 14
+      "vendidos": 12
     },
     {
       "id": "371560771",
@@ -31,7 +31,7 @@
       "desc": "Para los momentos de transformación que atravesamos como mujeres.",
       "price": "$75.000",
       "old": "",
-      "vendidos": 13
+      "vendidos": 9
     }
   ]
 }
